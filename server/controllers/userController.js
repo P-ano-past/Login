@@ -17,17 +17,17 @@ module.exports = {
   createUser: function ({ body }, res) {
     const bcrypt = require("bcryptjs");
 
-    bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.genSalt(10, function (err, salt, next) {
       bcrypt.hash(body.userPassword, salt, function (err, hash) {
         body.userPassword = hash;
         db.User.create(body)
-          .then(console.log(body), (dbModel) => res.json(dbModel))
-          .catch((err) => res.status(422).json(err));
+          .then((dbModel) => res.json(dbModel))
+          .catch((err) => res.status(422).json(err).then(res.status(200)));
 
         //body.userPassword now posts encrypted password into mongo.
       });
     });
-    // .then(res.status(200))
+
     // .catch(res.status(500));
   },
   update: function (req, res) {

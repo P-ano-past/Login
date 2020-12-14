@@ -60,14 +60,16 @@ export default class LoginForm extends Component {
     if (validateForm(this.state.errors)) {
       axios
         .post("/api/user", {
-          username: this.state.username,
-          userPassword: this.state.userPassword,
+          username: this.state.username.replace(/\s+/g, ""),
+          userPassword: this.state.userPassword.replace(/\s+/g, ""),
         })
-        .then((req) => {
-          console.log(req);
+        .then((res) => {
+          console.log(res);
         })
         .catch((err) => {
-          console.log(err.res);
+          console.log(err.code);
+          console.log(err.message);
+          console.log(err.stack);
         });
 
       this.setState({
