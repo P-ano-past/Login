@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 const validateForm = (errors) => {
@@ -21,8 +22,10 @@ export default class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoggedIn: false,
       username: "",
       userPassword: "",
+      redirect: null,
       errors: {
         username: "",
         userPassword: "",
@@ -64,7 +67,14 @@ export default class LoginForm extends Component {
           userPassword: this.state.userPassword.replace(/\s+/g, ""),
         })
         .then((res) => {
-          console.log(res);
+          console.log("res.status", res.status);
+
+          if (res.status === 200) {
+            console.log("the status is 200 bihhh");
+            this.setState({ redirect: "/Dashboard" });
+          } else {
+            console.log("the status is NOT 200, its: " + res.status);
+          }
         })
         .catch((err) => {
           console.log(err.code);
@@ -88,6 +98,9 @@ export default class LoginForm extends Component {
 
   render() {
     const { errors } = this.state;
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <Container>
         <Row>
