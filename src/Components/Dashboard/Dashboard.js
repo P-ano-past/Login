@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
+import { usernameContext } from "../usernameContext/usernameContext";
 
-export default class Dashboard extends Component {
-  render() {
-    return <div>This is the dashboard</div>;
-  }
+export default function Dashboard(props) {
+  const username = useContext(usernameContext);
+  return (
+    <div>
+      <h1>{username}</h1>
+    </div>
+  );
 }

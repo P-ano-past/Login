@@ -1,24 +1,32 @@
+import React, { Component } from "react";
 import "./App.css";
 import LoginForm from "./Components/LoginForm/LoginForm";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard/Dashboard";
-import { UserProvider } from "./Components/UserContext/UserContext";
+// import { usernameContext } from "./Components/usernameContext/usernameContext";
 
-function App() {
-  const user = { name: "bloopie", loggedIn: true };
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
 
-  return (
-    <div className="App">
-      <UserProvider value={user}>
+  render() {
+    return (
+      <div className="App">
+        {/* <usernameContext.Provider value={this.state.user}> */}
         {/* <LoginForm /> */}
         This is the app
         <Switch>
           <Route path="/" exact component={LoginForm} />
-          <Route path="/Dashbaord" exact component={Dashboard} />
+          <Route path="/Dashboard" exact component={Dashboard} />
         </Switch>
-      </UserProvider>
-    </div>
-  );
+        {/* </usernameContext.Provider> */}
+      </div>
+    );
+  }
 }
 
 export default App;
