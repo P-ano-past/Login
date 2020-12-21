@@ -3,30 +3,31 @@ import "./App.css";
 import LoginForm from "./Components/LoginForm/LoginForm";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard/Dashboard";
-// import { usernameContext } from "./Components/usernameContext/usernameContext";
+import { UsernameContext } from "./Components/UsernameContext/UsernameContext";
 
-class App extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      profile: null,
+      setProfile: this.setProfile,
     };
   }
+
+  setProfile = (profile) => {
+    this.setState({ profile });
+  };
 
   render() {
     return (
       <div className="App">
-        {/* <usernameContext.Provider value={this.state.user}> */}
-        {/* <LoginForm /> */}
-        This is the app
-        <Switch>
-          <Route path="/" exact component={LoginForm} />
-          <Route path="/Dashboard" exact component={Dashboard} />
-        </Switch>
-        {/* </usernameContext.Provider> */}
+        <UsernameContext.Provider value={this.state}>
+          <Switch>
+            <Route path="/" exact component={LoginForm} />
+            <Route path="/Dashboard" exact component={Dashboard} />
+          </Switch>
+        </UsernameContext.Provider>
       </div>
     );
   }
 }
-
-export default App;

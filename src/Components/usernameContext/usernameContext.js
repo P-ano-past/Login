@@ -1,9 +1,5 @@
 import React from "react";
 
-// export const loggedInUser = {
-//     username: "",
-//     isLoggedIn: ""
-// }
-const usernameContext = React.createContext(null);
+const defaultVal = { profile: {} };
 
-export { usernameContext };
+export const UsernameContext = React.createContext(defaultVal);

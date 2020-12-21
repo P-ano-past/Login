@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
+// import { UsernameProvider } from "./Components/UsernameContext/UsernameContext";
 import App from "./App";
 
 const history = createBrowserHistory();
