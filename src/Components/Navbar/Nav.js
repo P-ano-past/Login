@@ -16,22 +16,17 @@ export default class Nav extends Component {
   componentDidMount = () => {
     const context = this.context;
     this.setState(context);
-    console.log("this.context from componentdidmount", this.context);
   };
 
   render() {
-    const isLoggedIn = this.context.profile.isLoggedIn;
-    const profileUsername = this.context.profile.username;
-    console.log("this.context", this.context);
-    console.log("this.context.profile", this.context.profile.username);
-
+    const profileUsername = this.context.profile.usernameContext;
     return (
       <Navbar>
         <Navbar.Brand href="#home">Password Hash Test!</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            {isLoggedIn ? profileUsername : "Please sign in!"}
+            {profileUsername ? profileUsername : "Please sign in!"}
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>

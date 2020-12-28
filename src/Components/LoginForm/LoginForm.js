@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { UsernameContext } from "../UsernameContext/UsernameContext";
 
@@ -40,7 +40,6 @@ export default class LoginForm extends Component {
   _initProfile() {
     const context = this.context;
     //modify the set profile to add information to the "profile" object for the usernameContext.
-    console.log("_initProfile this.state.isloggedin", this.state.isLoggedIn);
     context.setProfile({
       usernameContext: this.state.username,
       isLoggedInContext: this.state.isLoggedIn,
@@ -85,7 +84,6 @@ export default class LoginForm extends Component {
         })
         .then((res) => {
           if (res.status === 200) {
-            // console.log("this.state", this.state);
             this.setState({
               redirect: "/Dashboard",
               isLoggedIn: true,
@@ -104,7 +102,6 @@ export default class LoginForm extends Component {
       this.handleShow();
     }
     this._initProfile();
-    console.log("login form this.state", this.state);
   };
 
   handleReset = (event) => {
@@ -112,16 +109,9 @@ export default class LoginForm extends Component {
   };
 
   render() {
-    // let props = this.props;
-    // let loggedInUser = this.context;
     const { errors } = this.state;
     if (this.state.redirect) {
-      return (
-        <Redirect
-          to={this.state.redirect}
-          // onChange={(e) => this.setState({ isLoggedIn: true })}
-        />
-      );
+      return <Redirect to={this.state.redirect} />;
     }
 
     return (

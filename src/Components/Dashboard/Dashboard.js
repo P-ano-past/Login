@@ -16,8 +16,9 @@ export default class Dashboard extends Component {
 
   componentDidMount = () => {
     const context = this.context;
-    this.setState({ profile: context.profile });
-    console.log("context from dashbaord", context);
+    this.setState({
+      profile: context.profile,
+    });
   };
 
   homeClick = () => {
@@ -33,8 +34,7 @@ export default class Dashboard extends Component {
     }
     return (
       <Container>
-        <h3>Welcome, {profile.username}!</h3>
-        <Button onClick={this.homeClick}>Home</Button>
+        <h3>Welcome, {profile.usernameContext}!</h3>
       </Container>
     );
   }
