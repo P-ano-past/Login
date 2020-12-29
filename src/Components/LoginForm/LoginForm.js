@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { UsernameContext } from "../UsernameContext/UsernameContext";
+import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 
 const validateForm = (errors) => {
   let valid = true;

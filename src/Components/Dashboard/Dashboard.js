@@ -1,6 +1,6 @@
 import { Button, Container } from "react-bootstrap";
 import React, { Component } from "react";
-import { UsernameContext } from "../UsernameContext/UsernameContext";
+import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import { Redirect } from "react-router-dom";
 
 export default class Dashboard extends Component {
@@ -16,25 +16,23 @@ export default class Dashboard extends Component {
 
   componentDidMount = () => {
     const context = this.context;
+
     this.setState({
       profile: context.profile,
     });
-  };
 
-  homeClick = () => {
-    this.setState({
-      redirect: "/",
-    });
+    console.log(this.state);
   };
 
   render() {
     const { profile } = this.state;
-    if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
-    }
+
+    console.log({ profile });
+    console.log(profile);
     return (
       <Container>
         <h3>Welcome, {profile.usernameContext}!</h3>
+        <h1>{this.context.isLoggedinContext}</h1>
       </Container>
     );
   }

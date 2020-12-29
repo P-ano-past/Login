@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { UsernameContext } from "../UsernameContext/UsernameContext";
-import { Navbar } from "react-bootstrap";
+import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
+import { Navbar, Button } from "react-bootstrap";
+import { NavLink, Redirect } from "react-router-dom";
 
-export default class Nav extends Component {
+export default class Navigation extends Component {
   static contextType = UsernameContext;
 
   constructor(props) {
@@ -22,15 +23,20 @@ export default class Nav extends Component {
     const profileUsername = this.context.profile.usernameContext;
     return (
       <Navbar>
-        <Navbar.Brand href="#home">Password Hash Test!</Navbar.Brand>
+        <Navbar.Brand href="/">Password Hash Test!</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
+          <NavLink to="/">Home</NavLink>|<NavLink to="/about">About</NavLink>|
           <Navbar.Text>
-            {profileUsername ? profileUsername : "Please sign in!"}
+            {profileUsername ? (
+              profileUsername
+            ) : (
+              <NavLink to="/signin">Sign in</NavLink>
+            )}
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
     );
   }
 }
-Nav.contextType = UsernameContext;
+Navigation.contextType = UsernameContext;
