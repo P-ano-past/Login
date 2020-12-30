@@ -88,6 +88,7 @@ export default class LoginForm extends Component {
               redirect: "/Dashboard",
               userProfile: this.state.username,
               isLoggedIn: true,
+              //async stte change
             });
           } else {
             console.log("the status is NOT 200, its: " + res.status);
