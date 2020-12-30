@@ -11,8 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { UsernameContext } from "../UsernameContext/UsernameContext";
-import context from "react-bootstrap/esm/AccordionContext";
+import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -20,17 +19,16 @@ const validateForm = (errors) => {
   return valid;
 };
 
-export default class LoginForm extends Component {
+export default class RegistrationForm extends Component {
   static contextType = UsernameContext;
 
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: null,
-      profile: null,
       username: "",
       userPassword: "",
       redirect: null,
+      isLoggedIn: "",
       errors: {
         username: "",
         userPassword: "",
@@ -40,7 +38,11 @@ export default class LoginForm extends Component {
 
   _initProfile() {
     const context = this.context;
-    context.setProfile(this.state);
+    //modify the set profile to add information to the "profile" object for the usernameContext.
+    context.setProfile({
+      usernameContext: this.state.username,
+      isLoggedIn: true,
+    });
   }
 
   componentDidMount() {
@@ -51,7 +53,6 @@ export default class LoginForm extends Component {
     event.preventDefault();
     const { name, value } = event.target;
     let errors = this.state.errors;
-    this._initProfile();
 
     switch (name) {
       case "username":
@@ -74,7 +75,6 @@ export default class LoginForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     if (validateForm(this.state.errors)) {
       axios
         .post("/api/user", {
@@ -83,12 +83,9 @@ export default class LoginForm extends Component {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log("this.state", this.state);
             this.setState({
               redirect: "/Dashboard",
-              userProfile: this.state.username,
               isLoggedIn: true,
-              //async stte change
             });
           } else {
             console.log("the status is NOT 200, its: " + res.status);
@@ -103,6 +100,7 @@ export default class LoginForm extends Component {
       console.error("Invalid Form");
       this.handleShow();
     }
+    this._initProfile();
   };
 
   handleReset = (event) => {
@@ -110,10 +108,7 @@ export default class LoginForm extends Component {
   };
 
   render() {
-    // let props = this.props;
-    // let loggedInUser = this.context;
     const { errors } = this.state;
-
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />;
     }
@@ -123,6 +118,7 @@ export default class LoginForm extends Component {
         <UsernameContext.Provider value={this.state}>
           <Row>
             <Col>
+              Sign-In here:
               <Form onSubmit={this.handleSubmit} noValidate>
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>

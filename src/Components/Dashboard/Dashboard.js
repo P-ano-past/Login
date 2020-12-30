@@ -1,6 +1,6 @@
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import React, { Component } from "react";
-import { UsernameContext } from "../UsernameContext/UsernameContext";
+import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import { Redirect } from "react-router-dom";
 
 export default class Dashboard extends Component {
@@ -14,35 +14,27 @@ export default class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const context = this.context;
-    console.log("context", context);
-    this.setState({ profile: context.profile });
-  }
 
-  handleClick() {
-    console.log(UsernameContext);
-  }
-
-  homeClick = () => {
-    console.log(this.state);
     this.setState({
-      redirect: "/",
+      profile: context.profile,
     });
+
+    console.log(this.state);
   };
 
   render() {
     const { profile } = this.state;
-    console.log("dashboard profile", { profile });
-    if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
-    }
-    // const { profile } = this.state;
+
+    console.log({ profile });
+    console.log(profile);
+    console.log("this.context", this.context);
     return (
-      <div>
-        <h3>Welcome, {profile.username}!</h3>
-        <Button onClick={this.homeClick}>Home</Button>
-      </div>
+      <Container>
+        <h3>Welcome, {profile.usernameContext}!</h3>
+        <h1>{profile.testString}</h1>
+      </Container>
     );
   }
 }
