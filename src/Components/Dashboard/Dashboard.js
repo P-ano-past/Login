@@ -29,10 +29,11 @@ export default class Dashboard extends Component {
 
     console.log({ profile });
     console.log(profile);
+    console.log("this.context", this.context);
     return (
       <Container>
         <h3>Welcome, {profile.usernameContext}!</h3>
-        <h1>{this.context.isLoggedinContext}</h1>
+        <h1>{profile.testString}</h1>
       </Container>
     );
   }

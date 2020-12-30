@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import LoginForm from "./Components/LoginForm/LoginForm";
+import RegistrationForm from "./Components/LoginForm/RegistrationForm";
+import SignInForm from "./Components/LoginForm/SignInForm";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import { UsernameContext } from "./Utils/UsernameContext/UsernameContext";
@@ -27,7 +28,8 @@ export default class App extends React.Component {
           <Navigation component={Navigation} />
           <Switch>
             <Route path="/" exact component={Landing} />
-            <Route path="/signin" exact component={LoginForm} />
+            <Route path="/register" exact component={RegistrationForm} />
+            <Route path="/signIn" exact component={SignInForm} />
             <Route path="/about" exact component={Landing} />
 
             <Route path="/Dashboard" exact component={Dashboard} />

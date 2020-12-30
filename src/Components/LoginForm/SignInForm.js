@@ -19,17 +19,16 @@ const validateForm = (errors) => {
   return valid;
 };
 
-export default class LoginForm extends Component {
+export default class RegistrationForm extends Component {
   static contextType = UsernameContext;
 
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      isLoggedIn: null,
-      res: Number,
       userPassword: "",
       redirect: null,
+      isLoggedIn: "",
       errors: {
         username: "",
         userPassword: "",
@@ -42,7 +41,7 @@ export default class LoginForm extends Component {
     //modify the set profile to add information to the "profile" object for the usernameContext.
     context.setProfile({
       usernameContext: this.state.username,
-      isLoggedInContext: this.state.isLoggedIn,
+      isLoggedIn: true,
     });
   }
 
@@ -119,6 +118,7 @@ export default class LoginForm extends Component {
         <UsernameContext.Provider value={this.state}>
           <Row>
             <Col>
+              Sign-In here:
               <Form onSubmit={this.handleSubmit} noValidate>
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>

@@ -19,6 +19,8 @@ export default class Navigation extends Component {
     this.setState(context);
   };
 
+  signOutHandler() {}
+
   render() {
     const profileUsername = this.context.profile.usernameContext;
     return (
@@ -29,9 +31,15 @@ export default class Navigation extends Component {
           <NavLink to="/">Home</NavLink>|<NavLink to="/about">About</NavLink>|
           <Navbar.Text>
             {profileUsername ? (
-              profileUsername
+              <div>
+                {profileUsername}
+                <Button onClick={this.signOutHandler}>Sign out</Button>
+              </div>
             ) : (
-              <NavLink to="/signin">Sign in</NavLink>
+              <div>
+                <NavLink to="/signin">Sign in</NavLink> or
+                <NavLink to="/register"> Register</NavLink>
+              </div>
             )}
           </Navbar.Text>
         </Navbar.Collapse>
