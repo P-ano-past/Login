@@ -35,6 +35,8 @@ export default class RegistrationForm extends Component {
       },
     };
   }
+  this.handleUsernameChange = this.handleUsernameChange.bind(this)
+  this.handlePasswordChange = this.handlePasswordChange.bind(this)
 
   _initProfile() {
     const context = this.context;
@@ -47,6 +49,18 @@ export default class RegistrationForm extends Component {
 
   componentDidMount() {
     this._initProfile();
+  }
+
+  handleUsernameChange(event) {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handlePasswordChange(event){
+    this.setState({
+      userPassword: event.target.value,
+    })
   }
 
   handleChange = (event) => {
