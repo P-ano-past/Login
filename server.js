@@ -30,7 +30,7 @@ app.use(routes);
 
 mongoose
   .connect(
-    `mongodb+srv://root:YSPhWMyyDRmvJPk6@holupcluster0.qlsfi.mongodb.net/login?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@${process.env.DB_URL}?retryWrites=true&w=majority`,
     {
       // autoIndex: true,
       useNewUrlParser: true,

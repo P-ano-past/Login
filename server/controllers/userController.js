@@ -60,7 +60,7 @@ module.exports = {
             } else if (!isMatch) {
               console.log("Password doesn't match!");
             } else {
-              console.log("Password matches!");
+              console.log("Password matches!", isMatch);
             }
           }
         );

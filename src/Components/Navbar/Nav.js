@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
-import { Navbar, Button } from "react-bootstrap";
+import { Navbar, Button, NavDropdown, NavDropdownProps } from "react-bootstrap";
 import { NavLink, Redirect } from "react-router-dom";
 
 export default class Navigation extends Component {
-  static contextType = UsernameContext;
+  // static contextType = UsernameContext;
 
   constructor(props) {
     super(props);
@@ -15,11 +15,16 @@ export default class Navigation extends Component {
   }
 
   componentDidMount = () => {
-    const context = this.context;
-    this.setState(context);
+    // const context = this.context;
+    // this.setState(context);
   };
 
-  signOutHandler() {}
+  signOutHandler() {
+    console.log("signout cliked");
+  }
+  settingsHandler() {
+    console.log("settings cliked");
+  }
 
   render() {
     const profileUsername = this.context.profile.usernameContext;
@@ -28,13 +33,19 @@ export default class Navigation extends Component {
         <Navbar.Brand href="/">Password Hash Test!</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <NavLink to="/">Home</NavLink>|<NavLink to="/about">About</NavLink>|
+          <NavLink to="/">Home </NavLink> | <NavLink to="/about">About</NavLink>
+          |
           <Navbar.Text>
             {profileUsername ? (
-              <div>
-                {profileUsername}
-                <Button onClick={this.signOutHandler}>Sign out</Button>
-              </div>
+              <NavDropdown title={profileUsername}>
+                <NavDropdown.Item onClick={this.settingsHandler}>
+                  Settings
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={this.signOutHandler}>
+                  Sign out
+                </NavDropdown.Item>
+              </NavDropdown>
             ) : (
               <div>
                 <NavLink to="/signin">Sign in</NavLink> or

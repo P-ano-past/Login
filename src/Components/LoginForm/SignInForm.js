@@ -34,9 +34,10 @@ export default class RegistrationForm extends Component {
         userPassword: "",
       },
     };
+
+    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
-  this.handleUsernameChange = this.handleUsernameChange.bind(this)
-  this.handlePasswordChange = this.handlePasswordChange.bind(this)
 
   _initProfile() {
     const context = this.context;
@@ -53,14 +54,14 @@ export default class RegistrationForm extends Component {
 
   handleUsernameChange(event) {
     this.setState({
-      username: event.target.value
-    })
+      username: event.target.value,
+    });
   }
 
-  handlePasswordChange(event){
+  handlePasswordChange(event) {
     this.setState({
       userPassword: event.target.value,
-    })
+    });
   }
 
   handleChange = (event) => {
@@ -91,7 +92,7 @@ export default class RegistrationForm extends Component {
     event.preventDefault();
     if (validateForm(this.state.errors)) {
       axios
-        .post("/api/user", {
+        .post("/api/user/login", {
           username: this.state.username.replace(/\s+/g, ""),
           userPassword: this.state.userPassword.replace(/\s+/g, ""),
         })

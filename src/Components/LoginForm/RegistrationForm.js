@@ -29,24 +29,12 @@ export default class RegistrationForm extends Component {
       userPassword: "",
       redirect: null,
       isLoggedIn: "",
+      _id: "",
       errors: {
         username: "",
         userPassword: "",
       },
     };
-  }
-
-  _initProfile() {
-    const context = this.context;
-    //modify the set profile to add information to the "profile" object for the usernameContext.
-    context.setProfile({
-      usernameContext: this.state.username,
-      isLoggedIn: true,
-    });
-  }
-
-  componentDidMount() {
-    this._initProfile();
   }
 
   handleChange = (event) => {
@@ -83,10 +71,12 @@ export default class RegistrationForm extends Component {
         })
         .then((res) => {
           if (res.status === 200) {
+            // console.log("res from reg post ", res);
             this.setState({
               redirect: "/Dashboard",
               isLoggedIn: true,
-              //async stte change
+              _id: res.data._id,
+              //async state change
             });
           } else {
             console.log("the status is NOT 200, its: " + res.status);
@@ -96,12 +86,22 @@ export default class RegistrationForm extends Component {
           console.log(err);
           console.log(err.message);
           console.log(err.stack);
+        })
+        .then(() => {
+          const context = this.context;
+          context.setProfile({
+            usernameContext: this.state.username,
+            isLoggedInContext: this.state.isLoggedIn,
+            _id: this.state._id,
+          });
+          // this._initProfile();
+          // console.log("this.state after 200 handleSubmit", this.state);
         });
     } else {
       console.error("Invalid Form");
       this.handleShow();
     }
-    this._initProfile();
+    // this._initPrfofile();
   };
 
   handleReset = (event) => {

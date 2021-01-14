@@ -1,41 +1,48 @@
-import { Button, Container } from "react-bootstrap";
-import React, { Component } from "react";
+import { Button, Container, Form } from "react-bootstrap";
+import React, { useState, useContext } from "react";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
+import CreatePost from "../Create/CreatePost/CreatePost";
 
-export default class Dashboard extends Component {
-  static contextType = UsernameContext;
+export default function Dashboard() {
+  const userContext = useContext(UsernameContext);
+  // const [passHash, setPassHash] = useState("");
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: null,
-      profile: {},
-    };
-  }
+  // console.log("funk", userContext);
+  const profileUsername = userContext.profile.usernameContext;
+  const profileID = userContext.profile._id;
 
-  componentDidMount = () => {
-    const context = this.context;
+  // const getPassword = () => {
+  //   axios.get(`api/user/${profileID}`).then((res) => {
+  //     console.log("getPassword res", res);
+  //     const retrivedPassHash = res.data.userPassword;
+  //     setPassHash(retrivedPassHash);
+  //   });
+  // };
 
-    this.setState({
-      profile: context.profile,
-    });
+  return (
+    <Container>
+      <h3>
+        Welcome,
+        {profileUsername ? <p>{profileUsername}</p> : ""}
+      </h3>
 
-    console.log(this.state);
-  };
-
-  render() {
-    const { profile } = this.state;
-
-    console.log({ profile });
-    console.log(profile);
-    console.log("this.context", this.context);
-    return (
-      <Container>
-        <h3>Welcome, {profile.usernameContext}!</h3>
-        <h1>{profile.testString}</h1>
-      </Container>
-    );
-  }
+      {/* 
+      {passHash ? (
+        <p>
+          <b>Your hashed password: </b>
+          {passHash}
+        </p>
+      ) : (
+        <Button
+          onClick={() => {
+            getPassword();
+          }}
+        >
+          Get Password!
+        </Button>
+      )} */}
+    </Container>
+  );
 }
-Dashboard.contextType = UsernameContext;
