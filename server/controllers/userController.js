@@ -64,6 +64,6 @@ module.exports = {
 
         res.json(dbModel);
       })
-      .catch((err) => res.status(422).json(err));
+      .catch((err) => res.status(423).json(err));
   },
 };
