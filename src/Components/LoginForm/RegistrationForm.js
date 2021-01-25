@@ -94,8 +94,14 @@ export default class RegistrationForm extends Component {
             isLoggedInContext: this.state.isLoggedIn,
             _id: this.state._id,
           });
+
           // this._initProfile();
           // console.log("this.state after 200 handleSubmit", this.state);
+        })
+        .catch((err) => {
+          console.log(err);
+          console.log(err.message);
+          console.log(err.stack);
         });
     } else {
       console.error("Invalid Form");

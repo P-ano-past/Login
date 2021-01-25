@@ -5,9 +5,10 @@ import SignInForm from "./Components/LoginForm/SignInForm";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import { UsernameContext } from "./Utils/UsernameContext/UsernameContext";
-import Navigation from "./Components/Navbar/Nav";
+import Navigation from "./Components/Navbar/Navigation";
 import Landing from "./Components/Landing/Landing";
 import CreatePost from "./Components/Create/CreatePost/CreatePost";
+import Settings from "./Components/Settings/Settings";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class App extends React.Component {
             <Route path="/about" exact component={Landing} />
             <Route path="/Dashboard" exact component={Dashboard} />
             <Route path="/CreatePost" exact component={CreatePost} />
+            <Route path="/Settings" exact component={Settings} />
           </Switch>
         </UsernameContext.Provider>
       </div>

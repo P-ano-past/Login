@@ -22,8 +22,7 @@ module.exports = {
         body.userPassword = hash;
         db.User.create(body)
           .then((dbModel) => res.json(dbModel))
-          .catch((err) => res.status(422).json(err).then(res.status(200)));
-
+          .catch((err) => res.status(421).json(err).then(res.status(200)));
         //body.userPassword now posts encrypted password into mongo.
       });
     });
@@ -33,6 +32,9 @@ module.exports = {
   update: function (req, res) {
     db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
+      // .then((dbModel) => {
+      //   console.log(res);
+      // })
       .catch((err) => res.status(422).json(err));
   },
   remove: function (req, res) {
@@ -42,28 +44,23 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   login: function (req, res) {
+    // console.log("res", res);
+    // console.log("req", req);
+
     db.User.findOne({
-      username: req.body.data.username,
+      username: req.body.username,
       // userPassword: req.body.data.userPassword,
     })
       .then((dbModel) => {
         const bcrypt = require("bcryptjs");
         const hash = dbModel.userPassword;
 
-        console.log("hash:", hash);
-        bcrypt.compare(
-          req.body.data.userPassword,
-          hash,
-          function (err, isMatch) {
-            if (err) {
-              throw err;
-            } else if (!isMatch) {
-              console.log("Password doesn't match!");
-            } else {
-              console.log("Password matches!", isMatch);
-            }
+        // console.log("hash:", hash);
+        bcrypt.compare(req.body.userPassword, hash, function (err, isMatch) {
+          if (err) {
+            throw err;
           }
-        );
+        });
 
         res.json(dbModel);
       })

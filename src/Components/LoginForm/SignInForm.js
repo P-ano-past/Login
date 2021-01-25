@@ -98,12 +98,20 @@ export default class RegistrationForm extends Component {
         })
         .then((res) => {
           if (res.status === 200) {
+            const context = this.context;
+            console.log("200 res", res);
             this.setState({
               redirect: "/Dashboard",
               isLoggedIn: true,
+              _id: res.data._id,
+            });
+            context.setProfile({
+              usernameContext: this.state.username,
+              isLoggedInContext: this.state.isLoggedIn,
+              _id: this.state._id,
             });
           } else {
-            console.log("the status is NOT 200, its: " + res.status);
+            console.log("res status is NOT 200", res.status);
           }
         })
         .catch((err) => {
@@ -115,7 +123,6 @@ export default class RegistrationForm extends Component {
       console.error("Invalid Form");
       this.handleShow();
     }
-    this._initProfile();
   };
 
   handleReset = (event) => {
