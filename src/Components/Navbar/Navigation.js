@@ -5,12 +5,15 @@ import {
   Button,
   NavDropdown,
   NavDropdownProps,
+  FormGroup,
   Form,
   FormControl,
   FormControlProps,
   Input,
   InputGroup,
   InputGroupProps,
+  Dropdown,
+  DropdownProps,
 } from "react-bootstrap";
 import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -19,7 +22,9 @@ export default function Navigation() {
   const userContext = useContext(UsernameContext);
   const profileUsername = userContext.profile.usernameContext;
   const profileID = userContext.profile._id;
+  const [searchQueries, setSearchQueries] = useState("");
   const [searchResults, setSearchResults] = useState("");
+  const [showDropdown, setDropDown] = useState("");
 
   const signOutHandler = (e) => {
     console.log("Signout clicked");
@@ -27,27 +32,60 @@ export default function Navigation() {
   };
 
   const friendSearch = (e) => {
-    axios.get("/api/user").then((res) => {
-      res.data.map((userInfo) => {
-        setSearchResults({ userInfo: userInfo.username });
-        console.log(searchResults);
-      });
-    });
+    axios
+      .get("/api/user")
+      .then((res) => setSearchQueries(res.data))
+      .catch((err) => console.log(err));
+    // this is where the toggle for the dropdown list should be triggered to show.
+    console.log(searchResults);
+  };
+
+  const handleSearchInput = (e) => {
+    console.log(e);
+    setDropDown(e);
   };
 
   return (
     <Navbar>
-      <Navbar.Brand href="/">Password Hash Test!</Navbar.Brand>
+      <Navbar.Brand href="/">nSpace</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         {profileUsername ? (
           <InputGroup>
-            <Form inline>
-              <FormControl
-                type="text"
-                placeholder="Search"
-                className="mr-sm-2"
-              />
+            <FormGroup
+              inline
+              // onSubmit={(e) => {
+              //   formClick();
+              // }}
+              noValidate
+            >
+              <Dropdown>
+                <FormControl
+                  placeholder="Search..."
+                  type="text"
+                  value={searchResults}
+                  onChange={(e) => setSearchResults(e.target.value)}
+                />
+
+                <Dropdown.Menu
+                  onSelect={(e) => {
+                    handleSearchInput();
+                  }}
+                  show
+                >
+                  {searchQueries
+                    ? searchQueries.map((searchQueries) => {
+                        console.log(searchQueries);
+                        return (
+                          <Dropdown.Item key={searchQueries}>
+                            {searchQueries.username}
+                          </Dropdown.Item>
+                        );
+                      })
+                    : ""}
+                </Dropdown.Menu>
+              </Dropdown>
+
               <Button
                 variant="outline-success"
                 onClick={(e) => {
@@ -56,7 +94,7 @@ export default function Navigation() {
               >
                 Search
               </Button>
-            </Form>
+            </FormGroup>
           </InputGroup>
         ) : (
           ""
@@ -84,5 +122,3 @@ export default function Navigation() {
     </Navbar>
   );
 }
-
-//avelasco@mvusd 9515717625
