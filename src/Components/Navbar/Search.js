@@ -5,6 +5,7 @@ import {
   FormGroup,
   FormControl,
   InputGroup,
+  ToggleButton,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -25,9 +26,10 @@ export default class Search extends Component {
       console.log("res", res.data);
       this.setState({
         searchQueries: res.data,
-        show: false,
+        show: true,
       });
     });
+    console.log("this.state", this.state);
   };
   friendSearch() {
     console.log("friendSearch trigg");
