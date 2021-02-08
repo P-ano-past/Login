@@ -22,6 +22,10 @@ export default class Search extends Component {
   }
 
   toggleDropdown = (e) => {
+    console.log("toggleClicked");
+    this.setState((prevState) => ({
+      show: !prevState.show,
+    }));
     axios.get("api/user").then((res) => {
       console.log("res", res.data);
       this.setState({
@@ -35,10 +39,6 @@ export default class Search extends Component {
     console.log("friendSearch trigg");
     console.log("searchQueries", this.state.searchQueries);
     console.log("this.state", this.state);
-
-    this.state.show
-      ? this.setState({ show: false })
-      : this.setState({ show: true });
   }
 
   render() {
@@ -47,6 +47,7 @@ export default class Search extends Component {
         <FormGroup inline noValidate>
           <FormControl
             placeholder="Search..."
+            onClick={this.toggleDropdown}
             onChange={this.toggleDropdown}
             type="text"
           />

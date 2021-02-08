@@ -44,9 +44,8 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   login: function (req, res) {
-    // console.log("res", res);
-    // console.log("req", req);
-
+    // console.log("res.data", res.data);
+    // console.log("req", req)
     db.User.findOne({
       username: req.body.username,
       // userPassword: req.body.data.userPassword,
@@ -56,13 +55,17 @@ module.exports = {
         const hash = dbModel.userPassword;
 
         // console.log("hash:", hash);
-        bcrypt.compare(req.body.userPassword, hash, function (err, isMatch) {
-          if (err) {
-            throw err;
+        bcrypt.compare(req.body.userPassword, hash, function (err, result) {
+          // console.log("result", result);
+
+          if (result === false) {
+            res.sendStatus(401);
+            // console.log(res.status());
+            // need to figure out how to stop the function from triggering the context and sending information to the next page.
+          } else if (result === true) {
+            res.sendStatus(200);
           }
         });
-
-        res.json(dbModel);
       })
       .catch((err) => res.status(423).json(err));
   },

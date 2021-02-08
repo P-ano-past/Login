@@ -29,6 +29,7 @@ export default class RegistrationForm extends Component {
       userPassword: "",
       redirect: null,
       isLoggedIn: "",
+      loginError: "",
       errors: {
         username: "",
         userPassword: "",
@@ -89,6 +90,7 @@ export default class RegistrationForm extends Component {
   };
 
   handleSubmit = (event) => {
+    // console.log("Submit clicked");
     event.preventDefault();
     if (validateForm(this.state.errors)) {
       axios
@@ -97,6 +99,7 @@ export default class RegistrationForm extends Component {
           userPassword: this.state.userPassword.replace(/\s+/g, ""),
         })
         .then((res) => {
+          console.log("res", res);
           if (res.status === 200) {
             const context = this.context;
             console.log("200 res", res);
@@ -110,14 +113,20 @@ export default class RegistrationForm extends Component {
               isLoggedInContext: this.state.isLoggedIn,
               _id: this.state._id,
             });
-          } else {
-            console.log("res status is NOT 200", res.status);
+          }
+          if (res.status === 401) {
+            console.log("password is incorrect");
           }
         })
         .catch((err) => {
           console.log(err);
-          console.log(err.message);
-          console.log(err.stack);
+          console.log("err.response.data", err.response.data);
+          console.log("err.response.status", err.response.status);
+          console.log("err.response.headers", err.response.headers);
+          if (err.response.status === 401) {
+            this.setState({ loginError: "Invalid username or password." });
+            //this is where the error needs to be  displayed when it triggers.
+          }
         });
     } else {
       console.error("Invalid Form");
@@ -186,6 +195,7 @@ export default class RegistrationForm extends Component {
                     <span className="error">{errors.userPassword}</span>
                   )}
                 </InputGroup>
+                <p value={this.state.loginError}>{this.state.loginError}</p>
               </Form>
               <Button type="submit" onClick={this.handleSubmit}>
                 Submit
