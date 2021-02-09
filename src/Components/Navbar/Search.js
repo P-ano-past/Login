@@ -14,23 +14,33 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDropdown: Boolean,
+      showDropdown: false,
       searchQueries: "",
       selectValue: "",
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
+  //This is supposed to be the section where you click outside and the dropdown menu closes.
+  // but uh.... i gotta figure some stuff out man. this ain't that important right now.
+
+  // componentDidMount() {
+  //   document.addEventListener("mousedown", this.handleClick, false);
+  // }
+
+  // componentWillUnmount() {
+  //   document.removeEventListener("mousedown", this.handleClick, false);
+  // }
+
   toggleDropdown = (e) => {
     console.log("toggleClicked");
     this.setState((prevState) => ({
-      show: !prevState.show,
+      showDropdown: !prevState.showDropdown,
     }));
     axios.get("api/user").then((res) => {
       console.log("res", res.data);
       this.setState({
         searchQueries: res.data,
-        show: true,
       });
     });
     console.log("this.state", this.state);
@@ -45,31 +55,26 @@ export default class Search extends Component {
     return (
       <InputGroup>
         <FormGroup inline noValidate>
+          {/* <Dropdown.Toggle> */}
           <FormControl
             placeholder="Search..."
             onClick={this.toggleDropdown}
             onChange={this.toggleDropdown}
             type="text"
           />
-          <Dropdown
-            onChange={(e) => {
-              this.toggleDropdown();
-            }}
-          >
-            <Dropdown.Menu show={this.state.show}>
-              {this.state.searchQueries
-                ? this.state.searchQueries.map((searchQueries) => {
-                    console.log(searchQueries);
-                    return (
-                      <Dropdown.Item key={searchQueries}>
-                        {searchQueries.username}
-                      </Dropdown.Item>
-                    );
-                  })
-                : ""}
-            </Dropdown.Menu>
-          </Dropdown>
-
+          <Dropdown.Menu show={this.state.showDropdown}>
+            {this.state.searchQueries
+              ? this.state.searchQueries.map((searchQueries) => {
+                  console.log(searchQueries);
+                  return (
+                    <Dropdown.Item key={searchQueries}>
+                      {searchQueries.username}
+                    </Dropdown.Item>
+                  );
+                })
+              : ""}
+          </Dropdown.Menu>
+          {/* </Dropdown.Toggle> */}
           <Button
             variant="outline-success"
             onClick={(e) => {

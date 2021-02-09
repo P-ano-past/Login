@@ -39,24 +39,23 @@ export default function Navigation() {
           ""
         )}
         <NavLink to="/">Home</NavLink> | <NavLink to="/about">About</NavLink>|
-        <Navbar.Text>
-          {profileUsername ? (
-            <NavDropdown title={profileUsername}>
-              <NavDropdown.Item>
-                <NavLink to="/Settings">Settings</NavLink>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={(e) => signOutHandler()}>
-                <NavLink to="/">Sign out</NavLink>
-              </NavDropdown.Item>
-            </NavDropdown>
-          ) : (
-            <div>
-              <NavLink to="/signin">Sign in</NavLink> or
-              <NavLink to="/register"> Register</NavLink>
-            </div>
-          )}
-        </Navbar.Text>
+        <Navbar.Text></Navbar.Text>
+        {profileUsername ? (
+          <NavDropdown title={profileUsername}>
+            <NavDropdown.Item>
+              <NavLink to="/Settings">Settings</NavLink>
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item onClick={(e) => signOutHandler()}>
+              <NavLink to="/">Sign out</NavLink>
+            </NavDropdown.Item>
+          </NavDropdown>
+        ) : (
+          <div>
+            <NavLink to="/signin">Sign in</NavLink> or
+            <NavLink to="/register"> Register</NavLink>
+          </div>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );
