@@ -14,9 +14,14 @@ const userSchema = new Schema({
     firstName: { type: String, max: 50 },
     lastName: { type: String, max: 50 },
   },
-  wall: {
-    graff: { type: String, max: 250 },
+  posts: {
+    post: { type: String, max: 250 },
     author: { type: String },
+    date: { type: Date, default: Date.now },
+    likes: {
+      who: { type: String },
+      numberOf: { type: Number },
+    },
   },
 });
 

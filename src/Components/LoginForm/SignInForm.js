@@ -90,7 +90,6 @@ export default class RegistrationForm extends Component {
   };
 
   handleSubmit = (event) => {
-    // console.log("Submit clicked");
     event.preventDefault();
     if (validateForm(this.state.errors)) {
       axios
@@ -99,15 +98,15 @@ export default class RegistrationForm extends Component {
           userPassword: this.state.userPassword.replace(/\s+/g, ""),
         })
         .then((res) => {
-          console.log("res", res);
           if (res.status === 200) {
             const context = this.context;
-            console.log("200 res", res);
+            // console.log("200 res", res);
             this.setState({
               redirect: "/Dashboard",
               isLoggedIn: true,
               _id: res.data._id,
             });
+            console.log("this.state", this.state);
             context.setProfile({
               usernameContext: this.state.username,
               isLoggedInContext: this.state.isLoggedIn,

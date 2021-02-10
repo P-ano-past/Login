@@ -14,6 +14,12 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
     console.log("findbyID triggered");
   },
+  createPost: function ({ body }, req, res) {
+    console.log(body);
+    console.log(res.data);
+    console.log(req.data);
+    db.User.create(body).then((dbModel) => res.json(dbModel));
+  },
   createUser: function ({ body }, res) {
     const bcrypt = require("bcryptjs");
 
@@ -44,26 +50,18 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   login: function (req, res) {
-    // console.log("res.data", res.data);
-    // console.log("req", req)
     db.User.findOne({
       username: req.body.username,
-      // userPassword: req.body.data.userPassword,
     })
       .then((dbModel) => {
         const bcrypt = require("bcryptjs");
         const hash = dbModel.userPassword;
-
-        // console.log("hash:", hash);
         bcrypt.compare(req.body.userPassword, hash, function (err, result) {
-          // console.log("result", result);
-
           if (result === false) {
             res.sendStatus(401);
-            // console.log(res.status());
-            // need to figure out how to stop the function from triggering the context and sending information to the next page.
           } else if (result === true) {
-            res.sendStatus(200);
+            res.json(dbModel).status(200);
+            // console.log(dbModel);
           }
         });
       })

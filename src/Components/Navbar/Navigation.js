@@ -1,26 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
-import {
-  Navbar,
-  Button,
-  NavDropdown,
-  FormGroup,
-  FormControl,
-  InputGroup,
-  Dropdown,
-} from "react-bootstrap";
-import { NavLink, Redirect } from "react-router-dom";
-import axios from "axios";
+import { Navbar, NavDropdown } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
 export default function Navigation() {
   const userContext = useContext(UsernameContext);
   const profileUsername = userContext.profile.usernameContext;
-  const profileID = userContext.profile._id;
-
-  const [searchQueries, setSearchQueries] = useState("");
-  const [searchResults, setSearchResults] = useState("");
-  const [dropdownShow, setDropdownShow] = useState(Boolean);
 
   const signOutHandler = (e) => {
     console.log("Signout clicked");
@@ -39,7 +25,7 @@ export default function Navigation() {
           ""
         )}
         <NavLink to="/">Home</NavLink> | <NavLink to="/about">About</NavLink>|
-        <Navbar.Text></Navbar.Text>
+        {/* <Navbar.Text></Navbar.Text> */}
         {profileUsername ? (
           <NavDropdown title={profileUsername}>
             <NavDropdown.Item>

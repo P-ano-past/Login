@@ -5,9 +5,7 @@ import {
   FormGroup,
   FormControl,
   InputGroup,
-  ToggleButton,
 } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 export default class Search extends Component {
