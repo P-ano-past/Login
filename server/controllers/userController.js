@@ -9,16 +9,40 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {
+    // console.log(res.body);
+    console.log(req.body);
+    console.log(req.params);
+    // console.log(body);
     db.User.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-    console.log("findbyID triggered");
+    // console.log("findbyID triggered");
   },
-  createPost: function ({ body }, req, res) {
-    console.log(body);
-    console.log(res.data);
-    console.log(req.data);
-    db.User.create(body).then((dbModel) => res.json(dbModel));
+  newTextPost: function (req, res) {
+    // console.log(res.body);
+    console.log("req.body", req.body);
+    console.log("req.params", req.params);
+    // console.log(body);
+    db.User.findById(req.params.id)
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+    console.log("newTextPost triggered");
+  },
+  createPost: function ({ body }, res) {
+    console.log("body", body);
+    console.log("post: ", body.posts.post);
+    console.log("author: ", body.posts.author);
+    // console.log("res", res);
+    db.User.findOneAndUpdate(
+      { _id: body.posts.author },
+      { $set: { posts: { post: body.posts.post, author: body.posts.author } } }
+    )
+      .then(console.log("attempt to save"))
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.json(err).status(421))
+      .then(res.status(200))
+
+      .catch((err) => res.status(422).json(err));
   },
   createUser: function ({ body }, res) {
     const bcrypt = require("bcryptjs");
@@ -29,18 +53,12 @@ module.exports = {
         db.User.create(body)
           .then((dbModel) => res.json(dbModel))
           .catch((err) => res.status(421).json(err).then(res.status(200)));
-        //body.userPassword now posts encrypted password into mongo.
       });
     });
-
-    // .catch(res.status(500));
   },
   update: function (req, res) {
     db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
-      // .then((dbModel) => {
-      //   console.log(res);
-      // })
       .catch((err) => res.status(422).json(err));
   },
   remove: function (req, res) {
@@ -61,7 +79,6 @@ module.exports = {
             res.sendStatus(401);
           } else if (result === true) {
             res.json(dbModel).status(200);
-            // console.log(dbModel);
           }
         });
       })

@@ -106,7 +106,7 @@ export default class RegistrationForm extends Component {
               isLoggedIn: true,
               _id: res.data._id,
             });
-            console.log("this.state", this.state);
+            // console.log("this.state", this.state);
             context.setProfile({
               usernameContext: this.state.username,
               isLoggedInContext: this.state.isLoggedIn,

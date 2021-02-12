@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: { type: String, required: true, max: 50 },
-  userPassword: { type: String, required: true },
+  username: { type: String, unique: true, max: 50 },
+  userPassword: { type: String, required: true, max: 100 },
   date: { type: Date, default: Date.now },
   friendList: {
     friendID: { type: String },

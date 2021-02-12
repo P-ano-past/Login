@@ -5,7 +5,7 @@ import NewPost from "./NewPost/NewPost";
 
 export default function Dashboard() {
   const userContext = useContext(UsernameContext);
-  console.log(userContext);
+  // console.log(userContext);
 
   const profileUsername = userContext.profile.usernameContext;
 

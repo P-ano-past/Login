@@ -5,15 +5,31 @@ import { UsernameContext } from "../../../Utils/UsernameContext/UsernameContext"
 
 export default function NewPost() {
   const userContext = useContext(UsernameContext);
-
-  console.log(userContext);
+  const profileID = userContext.profile._id;
   const [newUserPost, setNewUserPost] = useState("");
   const [postAuthor, setPostAuthor] = useState("");
 
+  const handleBoxClick = (e) => {
+    setPostAuthor(profileID);
+    console.log(userContext);
+  };
+
   const handleSubmit = () => {
-    console.log(postAuthor);
-    console.log(newUserPost);
-    // axios.post("/api/user/post", {});
+    // console.log(postAuthor);
+    // console.log(newUserPost);
+    axios
+      .post(`/api/user/post/${profileID}`, {
+        posts: { post: newUserPost, author: postAuthor },
+      })
+      .then((res) => {
+        console.log("line 34 res", res);
+      })
+
+      .catch((err) => {
+        console.log("err.response.data", err.response.data);
+        console.log("err.response.status", err.response.status);
+        console.log("err.response.headers", err.response.headers);
+      });
   };
 
   return (
@@ -31,6 +47,7 @@ export default function NewPost() {
                 aria-label="newUserPost"
                 name="newUserPost"
                 value={newUserPost}
+                onClick={(e) => handleBoxClick()}
                 onChange={(e) => setNewUserPost(e.target.value)}
               />
             </Form.Group>
