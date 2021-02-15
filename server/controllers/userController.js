@@ -10,39 +10,37 @@ module.exports = {
   },
   findById: function (req, res) {
     // console.log(res.body);
-    console.log(req.body);
-    console.log(req.params);
+    // console.log(req.body);
+    // console.log(req.params);
     // console.log(body);
     db.User.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
     // console.log("findbyID triggered");
   },
-  newTextPost: function (req, res) {
-    // console.log(res.body);
-    console.log("req.body", req.body);
-    console.log("req.params", req.params);
-    // console.log(body);
-    db.User.findById(req.params.id)
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
-    console.log("newTextPost triggered");
-  },
   createPost: function ({ body }, res) {
-    console.log("body", body);
-    console.log("post: ", body.posts.post);
-    console.log("author: ", body.posts.author);
+    // console.log("body", body);
+    // console.log("username: ", body.username);
+    // console.log("password: ", body.userPassword);
     // console.log("res", res);
-    db.User.findOneAndUpdate(
-      { _id: body.posts.author },
-      { $set: { posts: { post: body.posts.post, author: body.posts.author } } }
+    db.User.findByIdAndUpdate(
+      {
+        _id: body.posts.author,
+      },
+      {
+        $push: {
+          posts: {
+            post: body.posts.post,
+            author: body.posts.author,
+            upsert: true,
+            returnNewDocument: true,
+          },
+        },
+      },
+      { upsert: true, returnNewDocument: true }
     )
-      .then(console.log("attempt to save"))
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.json(err).status(421))
       .then(res.status(200))
-
-      .catch((err) => res.status(422).json(err));
+      .catch((err) => res.status(401).json(err));
   },
   createUser: function ({ body }, res) {
     const bcrypt = require("bcryptjs");

@@ -8,23 +8,38 @@ export default function NewPost() {
   const profileID = userContext.profile._id;
   const [newUserPost, setNewUserPost] = useState("");
   const [postAuthor, setPostAuthor] = useState("");
+  const [userPostPassword, setUserPostPassword] = useState("");
+  const [getUsername, setGetUsername] = useState("");
 
   const handleBoxClick = (e) => {
     setPostAuthor(profileID);
-    console.log(userContext);
+    // console.log(userContext);
+    axios
+      .get(`/api/user/${profileID}`)
+      .then((res) => {
+        console.log("axios get res", res.data);
+        const getUsername = res.data.username;
+        const userPostPassword = res.data.userPassword;
+
+        setGetUsername(getUsername);
+        setUserPostPassword(userPostPassword);
+        console.log(getUsername);
+      })
+      .catch((err) => {
+        console.log("err.response.data", err.response.data);
+        console.log("err.response.status", err.response.status);
+        console.log("err.response.headers", err.response.headers);
+      });
   };
 
   const handleSubmit = () => {
-    // console.log(postAuthor);
-    // console.log(newUserPost);
     axios
       .post(`/api/user/post/${profileID}`, {
         posts: { post: newUserPost, author: postAuthor },
       })
       .then((res) => {
-        console.log("line 34 res", res);
+        console.log("axios POST res", res);
       })
-
       .catch((err) => {
         console.log("err.response.data", err.response.data);
         console.log("err.response.status", err.response.status);

@@ -33,6 +33,7 @@ mongoose
     `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@${process.env.DB_URL}?retryWrites=true&w=majority`,
     {
       // autoIndex: true,
+      useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
