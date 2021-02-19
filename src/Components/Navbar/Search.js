@@ -63,7 +63,6 @@ export default class Search extends Component {
           <Dropdown.Menu show={this.state.showDropdown}>
             {this.state.searchQueries
               ? this.state.searchQueries.map((searchQueries) => {
-                  console.log(searchQueries);
                   return (
                     <Dropdown.Item key={searchQueries}>
                       {searchQueries.username}

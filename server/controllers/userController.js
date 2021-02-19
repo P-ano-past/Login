@@ -9,20 +9,12 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {
-    // console.log(res.body);
-    // console.log(req.body);
-    // console.log(req.params);
-    // console.log(body);
+    console.log("req.params", req.params);
     db.User.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-    // console.log("findbyID triggered");
   },
   createPost: function ({ body }, res) {
-    // console.log("body", body);
-    // console.log("username: ", body.username);
-    // console.log("password: ", body.userPassword);
-    // console.log("res", res);
     db.User.findByIdAndUpdate(
       {
         _id: body.posts.author,
@@ -39,7 +31,7 @@ module.exports = {
       },
       { upsert: true, returnNewDocument: true }
     )
-      .then(res.status(200))
+      .then(res.sendStatus(200))
       .catch((err) => res.status(401).json(err));
   },
   createUser: function ({ body }, res) {

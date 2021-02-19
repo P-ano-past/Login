@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import React, { useContext } from "react";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import NewPost from "./NewPost/NewPost";
+import Feed from "../Public/Feed";
 
 export default function Dashboard() {
   const userContext = useContext(UsernameContext);
@@ -23,6 +24,11 @@ export default function Dashboard() {
         <Col>
           <NewPost />
         </Col>
+      </Row>
+      <Row>
+        <Container>
+          <Feed />
+        </Container>
       </Row>
     </Container>
   );

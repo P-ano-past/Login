@@ -24,12 +24,20 @@ export default function Navigation() {
           // insert search.js here
           ""
         )}
-        <NavLink to="/">Home</NavLink> | <NavLink to="/about">About</NavLink>|
-        {/* <Navbar.Text></Navbar.Text> */}
+        <NavLink to="/">Home</NavLink> |
         {profileUsername ? (
           <NavDropdown title={profileUsername}>
             <NavDropdown.Item>
+              <NavLink to="/public">Profile</NavLink>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
               <NavLink to="/Settings">Settings</NavLink>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <NavLink to="/about">About</NavLink>
             </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={(e) => signOutHandler()}>

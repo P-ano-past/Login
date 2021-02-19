@@ -8,28 +8,10 @@ export default function NewPost() {
   const profileID = userContext.profile._id;
   const [newUserPost, setNewUserPost] = useState("");
   const [postAuthor, setPostAuthor] = useState("");
-  const [userPostPassword, setUserPostPassword] = useState("");
-  const [getUsername, setGetUsername] = useState("");
 
   const handleBoxClick = (e) => {
     setPostAuthor(profileID);
-    // console.log(userContext);
-    axios
-      .get(`/api/user/${profileID}`)
-      .then((res) => {
-        console.log("axios get res", res.data);
-        const getUsername = res.data.username;
-        const userPostPassword = res.data.userPassword;
-
-        setGetUsername(getUsername);
-        setUserPostPassword(userPostPassword);
-        console.log(getUsername);
-      })
-      .catch((err) => {
-        console.log("err.response.data", err.response.data);
-        console.log("err.response.status", err.response.status);
-        console.log("err.response.headers", err.response.headers);
-      });
+    console.log("userContext", userContext);
   };
 
   const handleSubmit = () => {
@@ -38,12 +20,15 @@ export default function NewPost() {
         posts: { post: newUserPost, author: postAuthor },
       })
       .then((res) => {
-        console.log("axios POST res", res);
+        // console.log(res.status);
       })
       .catch((err) => {
-        console.log("err.response.data", err.response.data);
+        console.log("err.response", err.response);
         console.log("err.response.status", err.response.status);
         console.log("err.response.headers", err.response.headers);
+      })
+      .then(() => {
+        setNewUserPost("");
       });
   };
 
@@ -53,7 +38,6 @@ export default function NewPost() {
         <Col>
           <Form noValidate>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Example textarea</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
