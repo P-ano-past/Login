@@ -17,6 +17,7 @@ const userSchema = new Schema({
   posts: [
     {
       post: { type: String, max: 250 },
+      postAuthor_id: { type: String, max: 50 },
       author: { type: String },
       date: { type: Date, default: Date.now },
       likes: {

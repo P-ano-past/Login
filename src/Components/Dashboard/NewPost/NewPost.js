@@ -5,19 +5,28 @@ import { UsernameContext } from "../../../Utils/UsernameContext/UsernameContext"
 
 export default function NewPost() {
   const userContext = useContext(UsernameContext);
+  const usernamePost = userContext.profile.usernameContext;
   const profileID = userContext.profile._id;
   const [newUserPost, setNewUserPost] = useState("");
-  const [postAuthor, setPostAuthor] = useState("");
+  const [postAuthorID, setPostAuthorID] = useState("");
+  const [postAuthorName, setPostAuthorName] = useState("");
 
   const handleBoxClick = (e) => {
-    setPostAuthor(profileID);
     console.log("userContext", userContext);
+    setPostAuthorID(profileID);
+    setPostAuthorName(usernamePost);
+    // console.log("userContext", userContext);
   };
 
   const handleSubmit = () => {
+    // console.log(postAuthorName);
     axios
       .post(`/api/user/post/${profileID}`, {
-        posts: { post: newUserPost, author: postAuthor },
+        posts: {
+          post: newUserPost,
+          author: postAuthorName,
+          postAuthor_id: postAuthorID,
+        },
       })
       .then((res) => {
         // console.log(res.status);

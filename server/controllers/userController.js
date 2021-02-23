@@ -9,21 +9,24 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {
-    console.log("req.params", req.params);
+    // console.log("req.params", req.params);
     db.User.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   createPost: function ({ body }, res) {
+    console.log(body);
     db.User.findByIdAndUpdate(
       {
-        _id: body.posts.author,
+        _id: body.posts.postAuthor_id,
       },
       {
         $push: {
           posts: {
             post: body.posts.post,
+            postAuthor_id: body.posts.postAuthor_id,
             author: body.posts.author,
+
             upsert: true,
             returnNewDocument: true,
           },
