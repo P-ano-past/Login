@@ -19,7 +19,7 @@ export default function NewPost() {
   };
 
   const handleSubmit = () => {
-    // console.log(postAuthorName);
+    console.log("window.location", window.location);
     axios
       .post(`/api/user/post/${profileID}`, {
         posts: {

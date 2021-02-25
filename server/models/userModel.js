@@ -7,9 +7,8 @@ const userSchema = new Schema({
   date: { type: Date, default: Date.now },
   friendList: {
     friendID: { type: String },
-    isFriend: { type: Boolean },
-    blocked: { type: Boolean },
   },
+  blocked: { friendID: { type: String } },
   profile: {
     firstName: { type: String, max: 50 },
     lastName: { type: String, max: 50 },

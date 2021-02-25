@@ -9,8 +9,15 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {
-    // console.log("req.params", req.params);
+    console.log("req.params", req.params);
     db.User.findById(req.params.id)
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  findByUser: function (req, res) {
+    // console.log("findbyUser triggered");
+    // console.log("req.params", req.params);
+    db.User.findById(req.params.username)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
