@@ -1,0 +1,42 @@
+/* Style for Landing page */
+
+/* #landingImg {
+} */
+
+#landingBg {
+  background-color: #151f2a;
+}
+
+.join {
+  font-family: "Almarai", sans-serif;
+  z-index: -99;
+  /* border: dashed black 3px; */
+  margin-top: 45%;
+  margin-left: 15%;
+  /* padding-top: 50%; */
+}
+
+#happNow {
+  font-size: 80px;
+  color: white;
+}
+
+#joinN {
+  font-size: 30px;
+  color: white;
+}
+
+#landingImg {
+  position: relative;
+  right: 40%;
+  top: 0px;
+  z-index: 1;
+}
+
+#joinContainer {
+  font: white;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  z-index: 1;
+}

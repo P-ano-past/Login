@@ -14,16 +14,11 @@ export default function Navigation() {
   };
 
   return (
-    <Navbar>
+    <Navbar id="navbar">
       <Navbar.Brand href="/">nSpace</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
-        {profileUsername ? (
-          <Search />
-        ) : (
-          // insert search.js here
-          ""
-        )}
+        {profileUsername ? <Search /> : ""}
         <NavLink to="/">Home</NavLink> |
         {profileUsername ? (
           <NavDropdown title={profileUsername}>

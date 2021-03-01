@@ -5,7 +5,6 @@ import SignInForm from "./Components/LoginForm/SignInForm";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import { UsernameContext } from "./Utils/UsernameContext/UsernameContext";
-import Navigation from "./Components/Navbar/Navigation";
 import Landing from "./Components/Landing/Landing";
 import CreatePost from "./Components/Create/CreatePost/CreatePost";
 import Settings from "./Components/Settings/Settings";
@@ -28,7 +27,6 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <UsernameContext.Provider value={this.state}>
-          <Navigation component={Navigation} />
           <Switch>
             <Route path="/" exact component={Landing} />
             <Route path="/register" exact component={RegistrationForm} />
