@@ -138,6 +138,7 @@ export default class Landing extends Component {
     return (
       <Container id="landingBg">
         <Row>
+          <Col></Col>
           <Col>
             <Image
               src="https://live.staticflickr.com/65535/50980086008_f443307bd5_k.jpg"
@@ -148,49 +149,65 @@ export default class Landing extends Component {
               // fluid={true}
             />
           </Col>
+
           <Col xs={6} id="joinContainer">
-            <Col>
-              <Form onSubmit={this.handleSubmit} noValidate>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    className="userInput"
-                    placeholder="Username"
-                    aria-label="Username"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                    aria-describedby="basic-addon1"
-                    type="text"
-                    autoComplete="username"
-                    noValidate
-                  />
-                  {errors.username.length > 0 && (
-                    <span className="error">{errors.username}</span>
-                  )}
-                </InputGroup>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    className="userInput"
-                    placeholder="Password"
-                    aria-label="Password"
-                    name="userPassword"
-                    value={this.state.userPassword}
-                    onChange={this.handleChange}
-                    aria-describedby="basic-addon1"
-                    type="password"
-                    autoComplete="password"
-                    noValidate
-                  />
-                  {errors.userPassword.length > 0 && (
-                    <span className="error">{errors.userPassword}</span>
-                  )}
-                </InputGroup>
-                <p value={this.state.loginError}>{this.state.loginError}</p>
-              </Form>
-              <Button type="submit" onClick={this.handleSubmit}>
-                Submit
-              </Button>
-            </Col>
+            <Row className="loginContainer">
+              <Col></Col>
+              <Col>
+                <Form onSubmit={this.handleSubmit} noValidate>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="userInput, loginContainer"
+                      placeholder="Username"
+                      aria-label="Username"
+                      name="username"
+                      value={this.state.username}
+                      onChange={this.handleChange}
+                      aria-describedby="basic-addon1"
+                      type="text"
+                      autoComplete="username"
+                      noValidate
+                    />
+                    {errors.username.length > 0 && (
+                      <span className="error">{errors.username}</span>
+                    )}
+                  </InputGroup>
+                </Form>
+              </Col>
+
+              <Col>
+                <Form>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="userInput, loginContainer"
+                      placeholder="Password"
+                      aria-label="Password"
+                      name="userPassword"
+                      value={this.state.userPassword}
+                      onChange={this.handleChange}
+                      aria-describedby="basic-addon1"
+                      type="password"
+                      autoComplete="password"
+                      noValidate
+                    />
+                    {errors.userPassword.length > 0 && (
+                      <span className="error">{errors.userPassword}</span>
+                    )}
+
+                    <p value={this.state.loginError}>{this.state.loginError}</p>
+                  </InputGroup>
+                </Form>
+              </Col>
+
+              <Col>
+                <Button type="submit" onClick={this.handleSubmit}>
+                  Submit
+                </Button>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+
             <p className="join">
               <h1 id="happNow">Happening now</h1>
               <h4 id="joinN">Join nSpace today.</h4>

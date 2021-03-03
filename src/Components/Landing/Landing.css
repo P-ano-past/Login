@@ -16,6 +16,10 @@
   /* padding-top: 50%; */
 }
 
+.loginContainer {
+  /* border: dashed white 3px; */
+}
+
 #happNow {
   font-size: 80px;
   color: white;
@@ -28,7 +32,7 @@
 
 #landingImg {
   position: relative;
-  right: 40%;
+  right: 53%;
   top: 0px;
   z-index: 1;
 }
