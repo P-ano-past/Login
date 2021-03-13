@@ -4,37 +4,50 @@
 } */
 
 #landingBg {
-  background-color: #151f2a;
+  background-color: #000000;
 }
 
 .join {
-  font-family: "Almarai", sans-serif;
+  font-family: "Public Sans", sans-serif;
   z-index: -99;
+  padding-left: 15px;
+  padding-top: 50px;
   /* border: dashed black 3px; */
-  margin-top: 45%;
-  margin-left: 15%;
+  /* margin-top: 45%;
+  margin-left: 15%; */
   /* padding-top: 50%; */
 }
 
-.loginContainer {
-  /* border: dashed white 3px; */
+.joinbtns {
+  border-radius: 100px;
+  padding: 10px;
 }
 
 #happNow {
   font-size: 80px;
   color: white;
+  padding-top: 25px;
 }
 
 #joinN {
   font-size: 30px;
   color: white;
+  padding-top: 25px;
 }
 
 #landingImg {
   position: relative;
-  right: 53%;
+  right: 54%;
+  padding: 0;
+  margin: 0;
   top: 0px;
   z-index: 1;
+}
+
+#bgimagerow {
+  /* border: dashed white 2px; */
+  margin: 0;
+  padding: 0;
 }
 
 #joinContainer {
@@ -43,4 +56,39 @@
   top: 8px;
   right: 16px;
   z-index: 1;
+  /* border: dashed red 2px; */
 }
+
+#loginbtn {
+  margin: 10px;
+  padding: 10px;
+}
+#signupbtn {
+  margin: 10px;
+  padding: 10px;
+}
+
+#submitButton {
+  border-radius: 100px;
+  padding: 10px 30px;
+}
+
+.userInput {
+  padding: 15px;
+  background-color: #000000;
+}
+
+.loginContainer {
+  padding: 15px;
+  color: #151f2a;
+}
+
+.fa-angle-up {
+  padding-left: 15px;
+  padding-top: 50px;
+}
+
+/* .col {
+  border: dashed white 3px;
+}
+*/

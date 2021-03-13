@@ -50,49 +50,45 @@ export default function Feed() {
   };
 
   return (
-    <Container>
-      <Row>
-        <ListGroup>
-          {userStatus
-            ? feed.map((feed) => (
-                <ListGroupItem>
-                  <Row>
-                    <Col>
-                      <h6
-                        onMouseEnter={() => {
-                          setFeedUsername(feed.postAuthor_id);
-                        }}
-                        onMouseLeave={() => {
-                          setFeedUsername("");
-                        }}
-                        onClick={() => {
-                          setFeedUsername(feed.postAuthor_id);
-                          console.log(feed.author);
-                          usernameClick();
-                        }}
-                        value={feed.postAuthor_id}
-                      >
-                        {feed.author}
-                      </h6>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <h5>{feed.post}</h5>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col></Col>
-                    <Col>ST</Col>
-                    <Col>RT</Col>
-                    <Col>LK</Col>
-                    <Col></Col>
-                  </Row>
-                </ListGroupItem>
-              ))
-            : "loading"}
-        </ListGroup>
-      </Row>
-    </Container>
+    <ListGroup>
+      {userStatus
+        ? feed.reverse().map((feed) => (
+            <ListGroupItem key={feed}>
+              <Row>
+                <Col>
+                  <h6
+                    onMouseEnter={() => {
+                      setFeedUsername(feed.postAuthor_id);
+                    }}
+                    onMouseLeave={() => {
+                      setFeedUsername("");
+                    }}
+                    onClick={() => {
+                      setFeedUsername(feed.postAuthor_id);
+                      console.log(feed.author);
+                      usernameClick();
+                    }}
+                    value={feed.postAuthor_id}
+                  >
+                    {feed.author}
+                  </h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h5>{feed.post}</h5>
+                </Col>
+              </Row>
+              <Row>
+                <Col></Col>
+                <Col>ST</Col>
+                <Col>RT</Col>
+                <Col>LK</Col>
+                <Col></Col>
+              </Row>
+            </ListGroupItem>
+          ))
+        : "loading"}
+    </ListGroup>
   );
 }

@@ -1,0 +1,10 @@
+#textSpace {
+  background-color: #000000;
+  color: #0e5078;
+}
+
+#sendBtn {
+  border-radius: 100px;
+  color: white;
+  background-color: #0e5078;
+}

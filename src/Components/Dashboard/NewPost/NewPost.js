@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { UsernameContext } from "../../../Utils/UsernameContext/UsernameContext";
+import "./NewPost.css";
 
 export default function NewPost() {
   const userContext = useContext(UsernameContext);
@@ -42,27 +43,26 @@ export default function NewPost() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Form noValidate>
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Control
-                as="textarea"
-                rows={3}
-                className="newUserPost"
-                placeholder="Whats going on?"
-                aria-label="newUserPost"
-                name="newUserPost"
-                value={newUserPost}
-                onClick={(e) => handleBoxClick()}
-                onChange={(e) => setNewUserPost(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-          <Button onClick={handleSubmit}> Submit!</Button>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Form noValidate>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Control
+            as="textarea"
+            id="textSpace"
+            rows={3}
+            className="newUserPost"
+            placeholder="Whats going on?"
+            aria-label="newUserPost"
+            name="newUserPost"
+            value={newUserPost}
+            onClick={(e) => handleBoxClick()}
+            onChange={(e) => setNewUserPost(e.target.value)}
+          />
+        </Form.Group>
+      </Form>
+      <Button id="sendBtn" onClick={handleSubmit}>
+        Send
+      </Button>
+    </>
   );
 }

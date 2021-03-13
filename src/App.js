@@ -9,6 +9,11 @@ import Landing from "./Components/Landing/Landing";
 import CreatePost from "./Components/Create/CreatePost/CreatePost";
 import Settings from "./Components/Settings/Settings";
 import Public from "./Components/Public/Public";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faAngleUp);
 
 export default class App extends React.Component {
   constructor(props) {

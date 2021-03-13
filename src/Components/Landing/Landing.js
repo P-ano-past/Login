@@ -14,12 +14,17 @@ import Footer from "../Footer/Footer";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { createBrowserHistory } from "history";
 
 const validateForm = (errors) => {
   let valid = true;
   Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
   return valid;
 };
+
+const history = createBrowserHistory();
 
 export default class Landing extends Component {
   static contextType = UsernameContext;
@@ -86,6 +91,8 @@ export default class Landing extends Component {
   };
 
   handleSubmit = (event) => {
+    // let history = useHistory();
+    console.log(history);
     event.preventDefault();
     if (validateForm(this.state.errors)) {
       axios
@@ -96,6 +103,7 @@ export default class Landing extends Component {
         .then((res) => {
           if (res.status === 200) {
             const context = this.context;
+            history.push("/Dashboard");
             // console.log("200 res", res);
             this.setState({
               redirect: "/Dashboard",
@@ -137,8 +145,7 @@ export default class Landing extends Component {
 
     return (
       <Container id="landingBg">
-        <Row>
-          <Col></Col>
+        <Row id="bgimagerow">
           <Col>
             <Image
               src="https://live.staticflickr.com/65535/50980086008_f443307bd5_k.jpg"
@@ -146,18 +153,16 @@ export default class Landing extends Component {
               height="900"
               alt="magenta led panels"
               id="landingImg"
-              // fluid={true}
             />
           </Col>
 
           <Col xs={6} id="joinContainer">
             <Row className="loginContainer">
-              <Col></Col>
               <Col>
                 <Form onSubmit={this.handleSubmit} noValidate>
                   <InputGroup className="mb-3">
                     <FormControl
-                      className="userInput, loginContainer"
+                      className="userInput"
                       placeholder="Username"
                       aria-label="Username"
                       name="username"
@@ -179,7 +184,7 @@ export default class Landing extends Component {
                 <Form>
                   <InputGroup className="mb-3">
                     <FormControl
-                      className="userInput, loginContainer"
+                      className="userInput"
                       placeholder="Password"
                       aria-label="Password"
                       name="userPassword"
@@ -200,18 +205,63 @@ export default class Landing extends Component {
               </Col>
 
               <Col>
-                <Button type="submit" onClick={this.handleSubmit}>
-                  Submit
+                <Button
+                  id="submitButton"
+                  type="submit"
+                  onClick={this.handleSubmit}
+                  variant="outline-primary"
+                >
+                  Log in
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <FontAwesomeIcon icon={faAngleUp} size="10x" color="white" />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p className="join">
+                  <h1 id="happNow">Happening now</h1>
+                  <h4 id="joinN">Join nSpace today.</h4>
+                </p>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Button
+                  className="joinbtns"
+                  id="signupbtn"
+                  onClick={() => {
+                    console.log("signup clicked");
+                  }}
+                  size="lg"
+                  block
+                >
+                  Sign up
                 </Button>
               </Col>
               <Col></Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button
+                  className="joinbtns"
+                  id="loginbtn"
+                  onClick={() => {
+                    console.log("login clicked.");
+                  }}
+                  variant="outline-primary"
+                  size="lg"
+                  block
+                >
+                  Login
+                </Button>
+              </Col>
               <Col></Col>
             </Row>
-
-            <p className="join">
-              <h1 id="happNow">Happening now</h1>
-              <h4 id="joinN">Join nSpace today.</h4>
-            </p>
           </Col>
         </Row>
         <Footer />
