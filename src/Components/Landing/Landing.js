@@ -217,7 +217,12 @@ export default class Landing extends Component {
             </Row>
             <Row>
               <Col>
-                <FontAwesomeIcon icon={faAngleUp} size="10x" color="white" />
+                <FontAwesomeIcon
+                  icon={faAngleUp}
+                  size="10x"
+                  color="white"
+                  id="heroLandingIcon"
+                />
               </Col>
             </Row>
             <Row>

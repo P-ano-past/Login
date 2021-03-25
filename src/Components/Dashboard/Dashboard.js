@@ -20,22 +20,17 @@ export default function Dashboard() {
 
   return (
     <Container>
-      {/* <Row> */}
       <Row>
-        <Col>
+        <Col xs={2}>
           <Sidenav />
         </Col>
-      </Row>
-      <Row>
-        <Col>
+        <Col id="contentContainer">
+          <Col id="category">Latest</Col>
           <NewPost />
+          <Col className="divider" />
           <Feed />
         </Col>
       </Row>
-      {/* <Row>
-          <Col></Col>
-        </Row> */}
-      {/* </Row> */}
     </Container>
   );
 }

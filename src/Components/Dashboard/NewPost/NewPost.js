@@ -43,7 +43,7 @@ export default function NewPost() {
   };
 
   return (
-    <>
+    <Container id="newPostCont">
       <Form noValidate>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Control
@@ -63,6 +63,6 @@ export default function NewPost() {
       <Button id="sendBtn" onClick={handleSubmit}>
         Send
       </Button>
-    </>
+    </Container>
   );
 }
