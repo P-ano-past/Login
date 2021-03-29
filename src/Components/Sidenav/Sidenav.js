@@ -31,89 +31,88 @@ export default function Sidenav() {
           color="white"
         />
       </div>
-
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faHome}
           // size="1x"
           color="white"
         />
-        Home
+        <span className="navTagItem">Home</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faHashtag}
           // size="1x"
           color="white"
         />
-        Explore
+        <span className="navTagItem">Explore</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faBell}
           // size="1x"
           color="white"
         />
-        Notifications
+        <span className="navTagItem">Notifications</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faEnvelope}
           // size="1x"
           color="white"
         />
-        Messages
+        <span className="navTagItem">Messages</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faBookmark}
           // size="1x"
           color="white"
         />
-        Bookmarks
+        <span className="navTagItem">Bookmarks</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faStream}
           // size="1x"
           color="white"
         />
-        Lists
+        <span className="navTagItem"> Lists</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faUserAlt}
           // size="1x"
           color="white"
         />
-        Profile
+        <span className="navTagItem">Profile</span>
       </div>
-      <div className="sidenavText">
+      <div className="sidenavItem">
         <FontAwesomeIcon
           className="faIcon"
           icon={faEllipsisH}
           // size="1x"
           color="white"
         />
-        More
+        <span className="navTagItem">More</span>
       </div>
-      <div>
-        <Button>Post</Button>
+
+      <Button id="postButton" size="lg" block>
+        Post
+      </Button>
+
+      <div id="UserNameDisplay">
+        <h3 id="displayUsername">
+          {profileUsername ? <p>{profileUsername}</p> : ""}
+        </h3>
       </div>
-      <Col>
-        <div className="sidenavText">
-          <h3 id="displayUsername">
-            {profileUsername ? <p>{profileUsername}</p> : ""}
-          </h3>
-        </div>
-      </Col>
     </Row>
     // </Container>
   );

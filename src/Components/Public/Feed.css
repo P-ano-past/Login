@@ -3,5 +3,26 @@
   margin-left: 80;
   padding-right: 80;
   padding-left: 80;
-  /* border: dotted 3px red; */
+  padding: 0;
+}
+
+.feedText {
+  background-color: #000000;
+  color: white;
+  border-bottom: #2f3336 solid 1px;
+  border-top: #2f3336 solid 1px;
+}
+
+.postIcon {
+  font-size: 15px;
+  color: #676f76;
+  /* padding: 10px; */
+}
+
+.iconCont {
+  padding: 0px 10px;
+}
+.iconCont:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
 }

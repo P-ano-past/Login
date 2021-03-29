@@ -1,44 +1,59 @@
-.sidenavText {
+.sidenavItem {
   color: white;
-  padding: 15px;
+  padding: 10px;
+  margin: 5px 0px;
+  display: inline-block;
+  position: relative;
   /* border: solid 1px red; */
 }
-.sidenavText:hover .faIcon,
-.sidenavText:hover {
+.sidenavItem:hover .faIcon,
+.sidenavItem:hover {
   color: #1da1f2;
   background-color: rgba(29, 161, 242, 0.1);
   border-radius: 100px;
 }
 
-.faIcon {
+.navTagItem {
+  line-height: 24px;
   font-size: 20px;
-  margin-right: 15px;
+  font-weight: 900;
+  margin: 0px 16px 0px 20px;
 }
 
-/* .faIcon:hover {
-  color: #1da1f2;
-} */
+.faIcon {
+  font-size: 26px;
+}
 
 #heroContainer {
-  padding: 0px 10px 0 10px;
-  /* border: solid 1px red; */
+  padding: 0px 10px;
 }
 #heroContainer:hover {
   background-color: rgba(29, 161, 242, 0.1);
-  border-radius: 200px;
+  border-radius: 9999px;
 }
 .heroIcon {
   font-size: 50px;
-
-  /* border: dotted 2px white; */
 }
 
 #dashNav {
+  height: 100%;
+  position: fixed;
   display: flex;
   align-items: center;
+  /* align-items: flex-start; */
   flex-direction: column;
   align-items: flex-start;
   /* border: solid 1px #2f3336; */
+}
+
+#postButton {
+  width: 100%;
+  border-radius: 9999px;
+}
+
+#UserNameDisplay {
+  bottom: 0%;
+  position: fixed;
 }
 
 #displayUsername {

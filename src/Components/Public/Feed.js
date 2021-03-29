@@ -3,6 +3,9 @@ import axios from "axios";
 import { Row, Col, Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import "./Feed.css";
+import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Feed() {
   const usernameContext = useContext(UsernameContext);
@@ -55,7 +58,7 @@ export default function Feed() {
       <ListGroup>
         {userStatus
           ? feed.reverse().map((feed) => (
-              <ListGroupItem key={feed}>
+              <ListGroupItem key={feed} className="feedText">
                 <Row>
                   <Col>
                     <h6
@@ -82,10 +85,27 @@ export default function Feed() {
                   </Col>
                 </Row>
                 <Row>
-                  <Col></Col>
-                  <Col>ST</Col>
-                  <Col>RT</Col>
-                  <Col>LK</Col>
+                  <div className="iconCont">
+                    <FontAwesomeIcon
+                      className="postIcon"
+                      icon={faComment}
+                      // size="1x"
+                    />
+                  </div>
+                  <div className="iconCont">
+                    <FontAwesomeIcon
+                      className="postIcon"
+                      icon={faRetweet}
+                      // size="1x"
+                    />
+                  </div>
+                  <div className="iconCont">
+                    <FontAwesomeIcon
+                      className="postIcon"
+                      icon={faHeart}
+                      // size="1x"
+                    />
+                  </div>
                   <Col></Col>
                 </Row>
               </ListGroupItem>

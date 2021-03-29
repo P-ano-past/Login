@@ -21,7 +21,7 @@ export default function Dashboard() {
   return (
     <Container>
       <Row>
-        <Col xs={2}>
+        <Col xs={3}>
           <Sidenav />
         </Col>
         <Col id="contentContainer">

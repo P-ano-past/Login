@@ -13,7 +13,8 @@
 }
 
 #contentContainer {
-  border: solid 1px #2f3336;
+  border-left: solid 1px #2f3336;
+  border-right: solid 1px #2f3336;
   /* border: dotted 5px red; */
 
   margin-right: 0;
