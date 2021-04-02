@@ -10,6 +10,7 @@
   margin-top: 10px;
   margin-bottom: 0px;
   border-bottom: solid 1px #2f3336;
+  position: fixed;
 }
 
 #contentContainer {
@@ -31,4 +32,27 @@
   background-color: #15181c;
   border-bottom: #2f3336 solid 1px;
   border-top: #2f3336 solid 1px;
+}
+
+#latestSortBtn {
+  color: white;
+}
+
+.latestSortIcon {
+  position: relative;
+  float: right;
+  background-color: #000000;
+  border-radius: 9999px;
+}
+.latestSortIcon:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
+}
+.latestSortIcon:focus {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
+}
+.latestSortIcon:active {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
 }

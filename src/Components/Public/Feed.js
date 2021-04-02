@@ -3,7 +3,11 @@ import axios from "axios";
 import { Row, Col, Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import "./Feed.css";
-import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+import {
+  faRetweet,
+  faShare,
+  faMeteor,
+} from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -84,29 +88,55 @@ export default function Feed() {
                     <h5>{feed.post}</h5>
                   </Col>
                 </Row>
-                <Row>
-                  <div className="iconCont">
-                    <FontAwesomeIcon
-                      className="postIcon"
-                      icon={faComment}
-                      // size="1x"
-                    />
-                  </div>
-                  <div className="iconCont">
-                    <FontAwesomeIcon
-                      className="postIcon"
-                      icon={faRetweet}
-                      // size="1x"
-                    />
-                  </div>
-                  <div className="iconCont">
-                    <FontAwesomeIcon
-                      className="postIcon"
-                      icon={faHeart}
-                      // size="1x"
-                    />
-                  </div>
-                  <Col></Col>
+                <Row className="userIntBtns">
+                  <Row>
+                    <Col>
+                      <Col className="iconCont">
+                        <FontAwesomeIcon
+                          className="postIcon"
+                          icon={faComment}
+                          // size="1x"
+                        />
+                      </Col>
+                      <Col></Col>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Col className="iconCont">
+                        <FontAwesomeIcon
+                          className="postIcon"
+                          icon={faRetweet}
+                          // size="1x"
+                        />
+                      </Col>
+                      <Col></Col>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Col className="iconCont">
+                        <FontAwesomeIcon
+                          className="postIcon"
+                          icon={faHeart}
+                          // size="1x"
+                        />
+                      </Col>
+                      <Col></Col>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Col className="iconCont">
+                        <FontAwesomeIcon
+                          className="postIcon"
+                          icon={faShare}
+                          // size="1x"
+                        />
+                      </Col>
+                      <Col></Col>
+                    </Col>
+                  </Row>
                 </Row>
               </ListGroupItem>
             ))
