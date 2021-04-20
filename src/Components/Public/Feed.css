@@ -1,3 +1,7 @@
+#statusContainer {
+  /* border: 1px solid red; */
+}
+
 .feedMain {
   margin-right: 80;
   margin-left: 80;
@@ -11,6 +15,43 @@
   color: white;
   border-bottom: #2f3336 solid 1px;
   border-top: #2f3336 solid 1px;
+}
+
+#feedUN {
+  margin: 0px;
+  padding: 0px;
+}
+#feedStatus {
+  margin: 0px;
+  padding: 0px;
+}
+
+#feedMoreIC {
+  float: right;
+  position: relative;
+  background-color: #000000;
+  border-radius: 9999px;
+  border-style: none;
+}
+#feedMoreIC:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
+  border-style: none;
+}
+#feedMoreIC:focus {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
+  border-style: none;
+  outline: none !important;
+  outline-offset: none !important;
+  box-shadow: none;
+}
+#feedMoreIC:active {
+  background-color: rgba(29, 161, 242, 0.1);
+  border-radius: 9999px;
+  border: none;
+  outline: none !important;
+  outline-offset: none !important;
 }
 
 .postIcon {

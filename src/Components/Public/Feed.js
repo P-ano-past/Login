@@ -1,12 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col, Container, ListGroup, ListGroupItem } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Button,
+} from "react-bootstrap";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import "./Feed.css";
 import {
   faRetweet,
   faShare,
   faMeteor,
+  faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,31 +71,43 @@ export default function Feed() {
         {userStatus
           ? feed.reverse().map((feed) => (
               <ListGroupItem key={feed} className="feedText">
-                <Row>
-                  <Col>
-                    <h6
-                      onMouseEnter={() => {
-                        setFeedUsername(feed.postAuthor_id);
-                      }}
-                      onMouseLeave={() => {
-                        setFeedUsername("");
-                      }}
-                      onClick={() => {
-                        setFeedUsername(feed.postAuthor_id);
-                        console.log(feed.author);
-                        usernameClick();
-                      }}
-                      value={feed.postAuthor_id}
-                    >
-                      {feed.author}
-                    </h6>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <h5>{feed.post}</h5>
-                  </Col>
-                </Row>
+                <Container id="statusContainer">
+                  <Row>
+                    <Col id="feedUN">
+                      <h6
+                        onMouseEnter={() => {
+                          setFeedUsername(feed.postAuthor_id);
+                        }}
+                        onMouseLeave={() => {
+                          setFeedUsername("");
+                        }}
+                        onClick={() => {
+                          setFeedUsername(feed.postAuthor_id);
+                          usernameClick();
+                        }}
+                        value={feed.postAuthor_id}
+                      >
+                        {feed.author}
+                      </h6>
+                    </Col>
+                    <Col>
+                      <Button
+                        id="feedMoreIC"
+                        onClick={() => {
+                          console.log("options clicked.");
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faEllipsisH} />
+                      </Button>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col id="feedStatus">
+                      <h5>{feed.post}</h5>
+                    </Col>
+                  </Row>
+                </Container>
+
                 <Row className="userIntBtns">
                   <Row>
                     <Col>

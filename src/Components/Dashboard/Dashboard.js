@@ -26,15 +26,31 @@ export default function Dashboard() {
           <Sidenav />
         </Col>
         <Col id="contentContainer">
-          <Col id="category">
-            Latest
-            <Button className="latestSortIcon" variant="outline-dark, dark">
-              <FontAwesomeIcon icon={faMeteor} id="latestSortBtn" />
-            </Button>
-          </Col>
-          <NewPost />
-          <Col className="divider" />
-          <Feed />
+          <Row>
+            <Container>
+              <Col id="category">
+                Latest
+                <Button className="latestSortIcon" variant="outline-dark, dark">
+                  <FontAwesomeIcon
+                    icon={faMeteor}
+                    id="latestSortBtn"
+                    onClick={() => {
+                      console.log("Meteor clicked.");
+                    }}
+                  />
+                </Button>
+              </Col>
+            </Container>
+          </Row>
+          <Container id="postCards">
+            <Row>
+              <NewPost />
+              <Col className="divider" />
+            </Row>
+            <Row>
+              <Feed />
+            </Row>
+          </Container>
         </Col>
       </Row>
     </Container>

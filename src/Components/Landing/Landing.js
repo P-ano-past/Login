@@ -8,6 +8,7 @@ import {
   InputGroup,
   FormControl,
   Form,
+  Modal,
 } from "react-bootstrap";
 import "./Landing.css";
 import Footer from "../Footer/Footer";
@@ -250,7 +251,7 @@ export default class Landing extends Component {
               </Col>
               <Col></Col>
             </Row>
-            <Row>
+            {/* <Row>
               <Col>
                 <Button
                   className="joinbtns"
@@ -266,7 +267,7 @@ export default class Landing extends Component {
                 </Button>
               </Col>
               <Col></Col>
-            </Row>
+            </Row> */}
           </Col>
         </Row>
         <Footer />

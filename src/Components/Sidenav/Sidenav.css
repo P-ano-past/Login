@@ -1,38 +1,61 @@
+.sideNavCont {
+  position: fixed;
+  border: orange 1px solid;
+  width: 13%;
+}
+
 .sidenavItem {
   color: white;
   padding: 10px;
   margin: 5px 0px;
-  display: inline-block;
+  display: flex;
   position: relative;
-  /* border: solid 1px red; */
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
 }
-.sidenavItem:hover .faIcon,
-.sidenavItem:hover {
+
+.sidenavContainer:hover .testLine {
   color: #1da1f2;
   background-color: rgba(29, 161, 242, 0.1);
   border-radius: 100px;
+}
+
+.testLine {
+  display: inline-flex;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .navTagItem {
   line-height: 24px;
   font-size: 20px;
   font-weight: 900;
-  margin: 0px 16px 0px 20px;
+  margin: auto;
+}
+
+.navIconCont {
+  padding-left: 0px;
+  width: 30px;
+  flex-shrink: 1;
 }
 
 .faIcon {
+  padding: 0px;
   font-size: 26px;
+  text-align: center;
+  width: 100%;
 }
 
-#heroContainer {
-  padding: 0px 10px;
+.heroIconCont {
+  padding: 0px;
 }
-#heroContainer:hover {
-  background-color: rgba(29, 161, 242, 0.1);
-  border-radius: 9999px;
-}
+
 .heroIcon {
   font-size: 50px;
+  padding: 0px;
+  text-align: center;
+  width: 100%;
 }
 
 #dashNav {
@@ -40,10 +63,8 @@
   position: fixed;
   display: flex;
   align-items: center;
-  /* align-items: flex-start; */
   flex-direction: column;
   align-items: flex-start;
-  /* border: solid 1px #2f3336; */
 }
 
 #postButton {
@@ -54,8 +75,46 @@
 #UserNameDisplay {
   bottom: 0%;
   position: fixed;
+  width: 13%;
 }
 
 #displayUsername {
+  color: white;
+}
+
+.testLineText {
+  white-space: nowrap;
+  padding: 5px 15px 5px 20px;
+  margin: 0px;
+  text-align: left;
+  display: inline-flex;
+}
+
+.userInfoCont {
+  border: 1px solid pink;
+  width: 100%;
+  display: flex;
+  width: fit-content;
+}
+.avatarCont {
+  /* border: 5px dashed orangered; */
+  justify-content: center;
+  width: fit-content;
+  padding: 0;
+}
+
+.avatarIcon {
+  border-radius: 9999px;
+  width: 50px;
+  justify-content: center;
+}
+
+.usernameCont {
+  border: 1px solid lightgreen;
+  width: 100%;
+}
+
+#displayNavUsername {
+  font-size: 18px;
   color: white;
 }

@@ -43,26 +43,28 @@ export default function NewPost() {
   };
 
   return (
-    <Container id="newPostCont">
-      <Form noValidate>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Control
-            as="textarea"
-            id="textSpace"
-            rows={3}
-            className="newUserPost"
-            placeholder="Whats going on?"
-            aria-label="newUserPost"
-            name="newUserPost"
-            value={newUserPost}
-            onClick={(e) => handleBoxClick()}
-            onChange={(e) => setNewUserPost(e.target.value)}
-          />
-        </Form.Group>
-      </Form>
-      <Button id="sendBtn" onClick={handleSubmit}>
-        Send
-      </Button>
+    <Container>
+      <Col>
+        <Form noValidate>
+          <Form.Group controlId="exampleForm.ControlTextarea1">
+            <Form.Control
+              as="textarea"
+              id="textSpace"
+              rows={3}
+              className="newUserPost"
+              placeholder="Whats going on?"
+              aria-label="newUserPost"
+              name="newUserPost"
+              value={newUserPost}
+              onClick={(e) => handleBoxClick()}
+              onChange={(e) => setNewUserPost(e.target.value)}
+            />
+          </Form.Group>
+        </Form>
+        <Button id="sendBtn" onClick={handleSubmit}>
+          Send
+        </Button>
+      </Col>
     </Container>
   );
 }
