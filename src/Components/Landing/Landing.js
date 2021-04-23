@@ -10,6 +10,9 @@ import {
   Form,
   Modal,
 } from "react-bootstrap";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalTitle from "react-bootstrap/ModalTitle";
+import ModalBody from "react-bootstrap/ModalBody";
 import "./Landing.css";
 import Footer from "../Footer/Footer";
 import { Redirect } from "react-router-dom";
@@ -18,6 +21,7 @@ import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { createBrowserHistory } from "history";
+import RegistrationForm from "../LoginForm/RegistrationForm";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -32,12 +36,14 @@ export default class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: false,
       errors: {
         username: "",
         userPassword: "",
       },
     };
-
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
@@ -89,6 +95,13 @@ export default class Landing extends Component {
         break;
     }
     this.setState({ errors, [name]: value });
+  };
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+  hideModal = () => {
+    this.setState({ show: false });
   };
 
   handleSubmit = (event) => {
@@ -242,6 +255,7 @@ export default class Landing extends Component {
                   id="signupbtn"
                   onClick={() => {
                     console.log("signup clicked");
+                    this.showModal();
                   }}
                   size="lg"
                   block
@@ -249,7 +263,37 @@ export default class Landing extends Component {
                   Sign up
                 </Button>
               </Col>
-              <Col></Col>
+              <Col>
+                <Modal
+                  show={this.state.show}
+                  handleClose={this.state.hideModal}
+                >
+                  <Container id="modalIconCont" fluid>
+                    <Row className="modalRowTitle">
+                      <Col>
+                        <FontAwesomeIcon
+                          icon={faAngleUp}
+                          size="10x"
+                          color="white"
+                          id="modalHeroIcon"
+                        />
+                      </Col>
+                      <Col id="modalCloseBtn">
+                        <Button
+                          id="btnModalStyle"
+                          onClick={() => this.hideModal()}
+                        >
+                          x
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Container>
+
+                  <ModalBody className="regModal">
+                    <RegistrationForm />
+                  </ModalBody>
+                </Modal>
+              </Col>
             </Row>
             {/* <Row>
               <Col>

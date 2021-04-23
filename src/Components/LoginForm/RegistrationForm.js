@@ -125,14 +125,9 @@ export default class RegistrationForm extends Component {
         <UsernameContext.Provider value={this.state}>
           <Row>
             <Col>
-              New users, please register here:
+              Create your account
               <Form onSubmit={this.handleSubmit} noValidate>
                 <InputGroup className="mb-3">
-                  <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">
-                      Username
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
                   <FormControl
                     className="userInput"
                     placeholder="Username"
@@ -150,11 +145,6 @@ export default class RegistrationForm extends Component {
                   )}
                 </InputGroup>
                 <InputGroup className="mb-3">
-                  <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">
-                      Password
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
                   <FormControl
                     className="userInput"
                     placeholder="Password"

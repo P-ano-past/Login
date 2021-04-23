@@ -88,6 +88,45 @@
   padding-top: 50px;
 }
 
+.regModal {
+  background-color: #000000;
+}
+
+#btnModalStyle {
+  background-color: none;
+  float: right;
+}
+
+#btnModalStyle:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+#modalHeroIcon {
+  font-size: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  float: right;
+  /* border: 1px solid red; */
+}
+
+#modalIconCont {
+  position: relative;
+  background-color: #000000;
+  /* border: 1px solid lightblue; */
+}
+
+.modalRowTitle {
+  display: flex;
+  justify-content: center;
+}
+
+#modalCloseBtn {
+  justify-content: right;
+  display: right;
+}
+
 /* .col {
   border: dashed white 3px;
 }
