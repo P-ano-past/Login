@@ -1,6 +1,6 @@
 import React from "react";
-import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
+
 import "./Footer.css";
 
 export default function Navigation() {

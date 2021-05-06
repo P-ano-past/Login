@@ -29,9 +29,13 @@ export default function Public() {
           <h1>{foundUser}</h1>
           <Button
             onClick={() => {
+              console.log("finding user");
               getWindowLocation();
             }}
-          />
+            placeholder="button that does something"
+          >
+            this is a BUTTON
+          </Button>
         </Col>
       </Row>
     </Container>

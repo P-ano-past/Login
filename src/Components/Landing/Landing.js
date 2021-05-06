@@ -10,8 +10,6 @@ import {
   Form,
   Modal,
 } from "react-bootstrap";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalTitle from "react-bootstrap/ModalTitle";
 import ModalBody from "react-bootstrap/ModalBody";
 import "./Landing.css";
 import Footer from "../Footer/Footer";
@@ -118,13 +116,13 @@ export default class Landing extends Component {
           if (res.status === 200) {
             const context = this.context;
             history.push("/Dashboard");
-            // console.log("200 res", res);
+
             this.setState({
               redirect: "/Dashboard",
               isLoggedIn: true,
               _id: res.data._id,
             });
-            // console.log("this.state", this.state);
+
             context.setProfile({
               usernameContext: this.state.username,
               isLoggedInContext: this.state.isLoggedIn,
@@ -142,7 +140,6 @@ export default class Landing extends Component {
           console.log("err.response.headers", err.response.headers);
           if (err.response.status === 401) {
             this.setState({ loginError: "Invalid username or password." });
-            //this is where the error needs to be  displayed when it triggers.
           }
         });
     } else {
@@ -295,23 +292,6 @@ export default class Landing extends Component {
                 </Modal>
               </Col>
             </Row>
-            {/* <Row>
-              <Col>
-                <Button
-                  className="joinbtns"
-                  id="loginbtn"
-                  onClick={() => {
-                    console.log("login clicked.");
-                  }}
-                  variant="outline-primary"
-                  size="lg"
-                  block
-                >
-                  Login
-                </Button>
-              </Col>
-              <Col></Col>
-            </Row> */}
           </Col>
         </Row>
         <Footer />

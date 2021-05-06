@@ -17,18 +17,43 @@
   border-top: #2f3336 solid 1px;
 }
 
-#feedUN {
+#feedUserCont {
   margin: 0px;
   padding: 0px;
+  border: solid purple 1px;
 }
+
+.avaCont {
+  /* border: solid 1px red; */
+  width: fit-content;
+  padding: 0px;
+}
+
+.feedAva {
+  border-radius: 9999px;
+  padding: 0px;
+}
+
+.usernameFeed {
+  color: #6e767d;
+  /* border: lightgreen dotted 1px; */
+}
+
 #feedStatus {
   margin: 0px;
   padding: 0px;
+  font-size: 15px;
+  color: #d3d3d3;
+  border: lightblue dotted 1px;
+}
+
+#feedUserIconBtnCont {
+  border: solid greenyellow 1px;
+  display: flex;
 }
 
 #feedMoreIC {
   float: right;
-  position: relative;
   background-color: #000000;
   border-radius: 9999px;
   border-style: none;
@@ -54,6 +79,16 @@
   outline-offset: none !important;
 }
 
+#usernameFeedCont {
+  border: dashed white 1px;
+}
+
+#optionsBtnCont {
+  /* border: dashed grey 2px; */
+  width: fit-content;
+  display: inline-block;
+}
+
 .postIcon {
   font-size: 15px;
   color: #676f76;
@@ -71,4 +106,5 @@
 
 .userIntBtns {
   justify-content: space-around;
+  /* border: orange dotted 1px; */
 }

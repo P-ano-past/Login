@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import {
@@ -14,12 +14,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Sidenav.css";
+import { Redirect, useHistory } from "react-router-dom";
 import Avatar from "react-avatar";
+import Profile from "../Public/Profile/Profile";
 
 export default function Sidenav() {
   const userContext = useContext(UsernameContext);
+  const history = useHistory();
 
   const profileUsername = userContext.profile.usernameContext;
+
+  const toProfile = () => {
+    console.log("profile btn clicked");
+    let path = "/Profile";
+    history.push(path);
+  };
 
   return (
     <Container className="sideNavCont">
@@ -147,7 +156,12 @@ export default function Sidenav() {
         {/*  */}
         <Container className="sidenavContainer">
           <Row xs="auto" className="sidenavItem">
-            <Col className="testLine">
+            <Col
+              className="testLine"
+              onClick={() => {
+                toProfile();
+              }}
+            >
               <Col xs={3} className="navIconCont">
                 <FontAwesomeIcon
                   className="faIcon"
@@ -201,7 +215,7 @@ export default function Sidenav() {
               </Col>
               <Col className="usernameCont">
                 <h3 id="displayNavUsername">
-                  {profileUsername ? <p>{profileUsername}</p> : ""}
+                  {profileUsername ? <p>@{profileUsername}</p> : ""}
                 </h3>
               </Col>
             </Col>

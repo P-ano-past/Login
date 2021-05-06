@@ -9,9 +9,11 @@ import Landing from "./Components/Landing/Landing";
 import CreatePost from "./Components/Create/CreatePost/CreatePost";
 import Settings from "./Components/Settings/Settings";
 import Public from "./Components/Public/Public";
+import Profile from "./Components/Public/Profile/Profile";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import Sidenav from "./Components/Sidenav/Sidenav";
 
 library.add(faAngleUp);
 
@@ -40,7 +42,8 @@ export default class App extends React.Component {
             <Route path="/Dashboard" exact component={Dashboard} />
             <Route path="/CreatePost" exact component={CreatePost} />
             <Route path="/Settings" exact component={Settings} />
-            <Route path="/:user" exact component={Public} />
+            {/* <Route path="/:user" exact component={Profile} /> */}
+            {/* <Route path="/Profile" exact component={Profile} /> */}
           </Switch>
         </UsernameContext.Provider>
       </div>

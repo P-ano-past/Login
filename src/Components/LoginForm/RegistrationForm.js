@@ -12,6 +12,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
+import "./RegistrationForm.css";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -125,7 +126,7 @@ export default class RegistrationForm extends Component {
         <UsernameContext.Provider value={this.state}>
           <Row>
             <Col>
-              Create your account
+              <p id="createAcct">Create your account</p>
               <Form onSubmit={this.handleSubmit} noValidate>
                 <InputGroup className="mb-3">
                   <FormControl

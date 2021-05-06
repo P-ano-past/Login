@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Row, Col, Container, Button, Form } from "react-bootstrap";
+import { Col, Container, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { UsernameContext } from "../../../Utils/UsernameContext/UsernameContext";
 import "./NewPost.css";
@@ -16,7 +16,6 @@ export default function NewPost() {
     console.log("userContext", userContext);
     setPostAuthorID(profileID);
     setPostAuthorName(usernamePost);
-    // console.log("userContext", userContext);
   };
 
   const handleSubmit = () => {
@@ -29,9 +28,7 @@ export default function NewPost() {
           postAuthor_id: postAuthorID,
         },
       })
-      .then((res) => {
-        // console.log(res.status);
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log("err.response", err.response);
         console.log("err.response.status", err.response.status);

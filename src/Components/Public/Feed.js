@@ -13,11 +13,13 @@ import "./Feed.css";
 import {
   faRetweet,
   faShare,
-  faMeteor,
   faEllipsisH,
+  faMeteor,
 } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Avatar from "react-avatar";
+import NewPost from "../Dashboard/NewPost/NewPost";
 
 export default function Feed() {
   const usernameContext = useContext(UsernameContext);
@@ -67,101 +69,137 @@ export default function Feed() {
 
   return (
     <Container className="feedMain">
-      <ListGroup>
-        {userStatus
-          ? feed.reverse().map((feed) => (
-              <ListGroupItem key={feed} className="feedText">
-                <Container id="statusContainer">
-                  <Row>
-                    <Col id="feedUN">
-                      <h6
-                        onMouseEnter={() => {
-                          setFeedUsername(feed.postAuthor_id);
-                        }}
-                        onMouseLeave={() => {
-                          setFeedUsername("");
-                        }}
-                        onClick={() => {
-                          setFeedUsername(feed.postAuthor_id);
-                          usernameClick();
-                        }}
-                        value={feed.postAuthor_id}
-                      >
-                        {feed.author}
-                      </h6>
-                    </Col>
-                    <Col>
-                      <Button
-                        id="feedMoreIC"
-                        onClick={() => {
-                          console.log("options clicked.");
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faEllipsisH} />
-                      </Button>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col id="feedStatus">
-                      <h5>{feed.post}</h5>
-                    </Col>
-                  </Row>
-                </Container>
+      <Col id="contentContainer">
+        <Row>
+          <Container>
+            <Col id="category">
+              Latest
+              <Button className="latestSortIcon" variant="outline-dark, dark">
+                <FontAwesomeIcon
+                  icon={faMeteor}
+                  id="latestSortBtn"
+                  onClick={() => {
+                    console.log("Meteor clicked.");
+                  }}
+                />
+              </Button>
+            </Col>
+          </Container>
+        </Row>
+        <Container id="postCards">
+          <Row>
+            <NewPost />
+            <Col className="divider" />
+          </Row>
+        </Container>
+      </Col>
 
-                <Row className="userIntBtns">
-                  <Row>
-                    <Col>
-                      <Col className="iconCont">
-                        <FontAwesomeIcon
-                          className="postIcon"
-                          icon={faComment}
-                          // size="1x"
+      <Container>
+        <ListGroup>
+          {userStatus
+            ? feed.reverse().map((feed) => (
+                <ListGroupItem key={feed} className="feedText">
+                  <Container id="statusContainer">
+                    <Row>
+                      <Col md="auto" className="avaCont">
+                        <Avatar
+                          className="feedAva"
+                          name={feed.author}
+                          size="50px"
                         />
+                        {/* need image here */}
                       </Col>
-                      <Col></Col>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Col className="iconCont">
-                        <FontAwesomeIcon
-                          className="postIcon"
-                          icon={faRetweet}
-                          // size="1x"
-                        />
+                      <Col id="feedUserCont">
+                        <Col id="feedUserIconBtnCont">
+                          <Col id="usernameFeedCont">
+                            <h6
+                              className="usernameFeed"
+                              onMouseEnter={() => {
+                                setFeedUsername(feed.postAuthor_id);
+                              }}
+                              onMouseLeave={() => {
+                                setFeedUsername("");
+                              }}
+                              onClick={() => {
+                                setFeedUsername(feed.postAuthor_id);
+                                usernameClick();
+                              }}
+                              value={feed.postAuthor_id}
+                            >
+                              @{feed.author}
+                            </h6>
+                          </Col>
+                          <Col md="auto" id="optionsBtnCont">
+                            <Button
+                              id="feedMoreIC"
+                              onClick={() => {
+                                console.log("options clicked.");
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faEllipsisH} />
+                            </Button>
+                          </Col>
+                        </Col>
+                        <Col id="feedStatus">
+                          <p>{feed.post}</p>
+                        </Col>
                       </Col>
-                      <Col></Col>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Col className="iconCont">
-                        <FontAwesomeIcon
-                          className="postIcon"
-                          icon={faHeart}
-                          // size="1x"
-                        />
-                      </Col>
-                      <Col></Col>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Col className="iconCont">
-                        <FontAwesomeIcon
-                          className="postIcon"
-                          icon={faShare}
-                          // size="1x"
-                        />
-                      </Col>
-                      <Col></Col>
-                    </Col>
-                  </Row>
-                </Row>
-              </ListGroupItem>
-            ))
-          : "loading"}
-      </ListGroup>
+                    </Row>
+
+                    <Container>
+                      <Row className="userIntBtns">
+                        <Row>
+                          <Col>
+                            <Col className="iconCont">
+                              <FontAwesomeIcon
+                                className="postIcon"
+                                icon={faComment}
+                                // size="1x"
+                              />
+                            </Col>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Col className="iconCont">
+                              <FontAwesomeIcon
+                                className="postIcon"
+                                icon={faRetweet}
+                                // size="1x"
+                              />
+                            </Col>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Col className="iconCont">
+                              <FontAwesomeIcon
+                                className="postIcon"
+                                icon={faHeart}
+                                // size="1x"
+                              />
+                            </Col>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Col className="iconCont">
+                              <FontAwesomeIcon
+                                className="postIcon"
+                                icon={faShare}
+                                // size="1x"
+                              />
+                            </Col>
+                          </Col>
+                        </Row>
+                      </Row>
+                    </Container>
+                  </Container>
+                </ListGroupItem>
+              ))
+            : "loading"}
+        </ListGroup>
+      </Container>
     </Container>
   );
 }
