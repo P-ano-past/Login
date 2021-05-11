@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Sidenav from "../../Sidenav/Sidenav";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./Profile.css";
 
 export default function Profile() {
@@ -8,7 +7,14 @@ export default function Profile() {
     <Container>
       <Row>
         <Col>
-          <Sidenav />
+          <h1>THIS IS THE PROFILE</h1>
+          <Button
+            onClick={() => {
+              console.log("this button was clicked");
+            }}
+          >
+            Test
+          </Button>
         </Col>
       </Row>
     </Container>

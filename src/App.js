@@ -42,7 +42,6 @@ export default class App extends React.Component {
             <Route path="/Dashboard" exact component={Dashboard} />
             <Route path="/CreatePost" exact component={CreatePost} />
             <Route path="/Settings" exact component={Settings} />
-            {/* <Route path="/:user" exact component={Profile} /> */}
             {/* <Route path="/Profile" exact component={Profile} /> */}
           </Switch>
         </UsernameContext.Provider>

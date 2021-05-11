@@ -3,6 +3,7 @@
   position: fixed;
   /* border: orange 1px solid; */
   width: 13%;
+  z-index: 9999;
 }
 
 .sidenavItem {
