@@ -26,10 +26,7 @@ import Profile from "../Public/Profile/Profile";
 export default function Dashboard() {
   const userContext = useContext(UsernameContext);
   const profileUsername = userContext.profile.usernameContext;
-
-  const [show, setShow] = useState(false);
-  const [hide, setHide] = useState(false);
-  const [navComp, setNavComp] = useState("");
+  const [navComp, setNavComp] = useState(<Feed />);
 
   const toFeed = () => {
     setNavComp(<Feed />);

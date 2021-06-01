@@ -1,0 +1,121 @@
+.profileCont {
+  width: 800px;
+  /* border: pink solid 1px; */
+  padding: 0;
+}
+
+.prfNameCont {
+  /* border: red solid 1px; */
+  padding: 0;
+}
+
+.backArrow {
+  width: fit-content;
+  color: #1da1f2;
+}
+
+.prfUsername {
+  color: #d9d9d9;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.placeholderImg {
+  background-color: #cccccc;
+  width: 799px;
+  padding: 0;
+  /* border: pink solid 1px; */
+}
+
+.imgPlaceholderCont {
+  justify-content: center;
+  background-color: #cccccc;
+  padding: 0;
+}
+
+.prfHeroImageCont {
+  background-color: #2f3336;
+  justify-content: center;
+  width: 798px;
+  height: 200px;
+  /* border: blue solid 1px; */
+  padding: 0;
+  margin: 0;
+}
+
+.prfPicCont {
+  /* border: yellow solid 5px; */
+  height: 50px;
+}
+
+.prfImgPlc {
+  border: #000000 solid 4px;
+  background-color: greenyellow;
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  bottom: 80px;
+  margin: 15px;
+}
+
+#editPrfBtn {
+  float: right;
+  border-radius: 50px;
+}
+
+.prfUsrInfoCont {
+  /* border: yellow solid 5px; */
+}
+
+.prfUsernameCont {
+  display: flex;
+  flex-direction: column;
+  /* border: peru solid 2px; */
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.prfAtUsername {
+  color: #6e767d;
+}
+
+.prfBioCont {
+}
+.prfBio {
+  color: #d9d9d9;
+}
+
+.presenceCont {
+  display: inline-flex;
+  align-content: flex-start;
+  padding-left: 15px;
+}
+
+.presenceText {
+  color: #6e767d;
+}
+
+.followCount {
+  display: flex;
+  align-content: flex-start;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.followNum {
+  font-weight: 800;
+  color: #d9d9d9;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.followingNum {
+  font-weight: 800;
+  color: #d9d9d9;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.profileNavBtns {
+  font-weight: 800;
+}

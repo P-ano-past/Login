@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import {
@@ -14,9 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Sidenav.css";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Avatar from "react-avatar";
-import Profile from "../Public/Profile/Profile";
 
 export default function Sidenav() {
   const userContext = useContext(UsernameContext);
@@ -80,7 +79,6 @@ export default function Sidenav() {
             </Col>
           </Row>
         </Container>
-
         {/*  */}
         <Container className="sidenavContainer">
           <Row xs="auto" className="sidenavItem">
@@ -98,7 +96,6 @@ export default function Sidenav() {
             </Col>
           </Row>
         </Container>
-
         {/*  */}
         <Container className="sidenavContainer">
           <Row xs="auto" className="sidenavItem">
@@ -117,7 +114,6 @@ export default function Sidenav() {
             </Col>
           </Row>
         </Container>
-
         {/*  */}
         <Container className="sidenavContainer">
           <Row xs="auto" className="sidenavItem">
@@ -135,7 +131,6 @@ export default function Sidenav() {
             </Col>
           </Row>
         </Container>
-
         {/*  */}
         <Container className="sidenavContainer">
           <Row xs="auto" className="sidenavItem">
