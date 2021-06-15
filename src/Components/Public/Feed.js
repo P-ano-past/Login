@@ -94,7 +94,7 @@ export default function Feed() {
         </Container>
       </Col>
 
-      <Container>
+      <Container className="statusFeedContainer">
         <ListGroup>
           {userStatus
             ? feed.reverse().map((feed) => (

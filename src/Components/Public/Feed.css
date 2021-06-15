@@ -2,12 +2,18 @@
   /* border: 1px solid red; */
 }
 
+.statusFeedContainer {
+  padding: 0px;
+}
+
 .feedMain {
   margin-right: 80;
   margin-left: 80;
   padding-right: 80;
   padding-left: 80;
   padding: 0;
+  /* border-left: #2f3336 solid 1px;
+  border-right: #2f3336 solid 1px; */
 }
 
 .feedText {
@@ -20,7 +26,7 @@
 #feedUserCont {
   margin: 0px;
   padding: 0px;
-  border: solid purple 1px;
+  /* border: solid purple 1px; */
 }
 
 .avaCont {
@@ -40,15 +46,15 @@
 }
 
 #feedStatus {
-  margin: 0px;
-  padding: 0px;
+  /* margin: 0px;
+  padding: 0px; */
   font-size: 15px;
   color: #d3d3d3;
-  border: lightblue dotted 1px;
+  /* border: lightblue dotted 1px; */
 }
 
 #feedUserIconBtnCont {
-  border: solid greenyellow 1px;
+  /* border: solid greenyellow 1px; */
   display: flex;
 }
 
@@ -80,7 +86,7 @@
 }
 
 #usernameFeedCont {
-  border: dashed white 1px;
+  /* border: dashed white 1px; */
 }
 
 #optionsBtnCont {

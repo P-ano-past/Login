@@ -71,10 +71,10 @@ export default function Profile() {
       </Container>
       <Container>
         <Row className="profileNavBtns">
-          <Col>Tweets</Col>
-          <Col>Tweets and replies</Col>
-          <Col>Media</Col>
-          <Col>Likes</Col>
+          <Col className="profileNavBtn">Tweets</Col>
+          <Col className="profileNavBtn">Tweets and replies</Col>
+          <Col className="profileNavBtn">Media</Col>
+          <Col className="profileNavBtn">Likes</Col>
         </Row>
       </Container>
       <Row>{profileTab}</Row>
