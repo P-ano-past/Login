@@ -1,12 +1,7 @@
-import axios from "axios";
 import React, { useState, useContext } from "react";
 import {
-  Col,
-  Row,
   Container,
   InputGroup,
-  InputGroupProps,
-  FormControlProps,
   FormControl,
   Button,
   Form,
@@ -19,27 +14,9 @@ export default function Settings() {
   const [newPassword1, setNewPassword1] = useState("");
   const [newPassword2, setNewPassword2] = useState("");
   const profileUsername = userContext.profile.usernameContext;
-  const profileID = userContext.profile._id;
-
-  const changeUsername = () => {
-    // console.log("username", username);
-    // console.log("new Password1", newPassword1);
-    // console.log("new Password2", newPassword2);
-  };
-
-  const handleChange = () => {
-    console.log(username);
-  };
+  // const profileID = userContext.profile._id;
 
   const handleSubmit = () => {
-    // axios.put(`/api/user/${profileID}`, {});
-    // need to find a way to stop triggering this on key press.
-    console.log(userContext);
-    console.log(profileID);
-    console.log("submit clicked!");
-    console.log("username", username);
-    console.log("newPassword1", newPassword1);
-    console.log("newPassword2", newPassword2);
     if (newPassword1 === newPassword2) {
       console.log("passwords match!");
     } else {

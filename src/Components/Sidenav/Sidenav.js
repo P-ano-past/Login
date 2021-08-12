@@ -13,9 +13,9 @@ import {
   faAngleUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Sidenav.css";
 import { useHistory } from "react-router-dom";
 import Avatar from "react-avatar";
+import "./Sidenav.css";
 
 export default function Sidenav() {
   const userContext = useContext(UsernameContext);

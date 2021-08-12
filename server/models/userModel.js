@@ -10,8 +10,8 @@ const userSchema = new Schema({
   },
   blocked: { friendID: { type: String } },
   profile: {
-    firstName: { type: String, max: 50 },
-    lastName: { type: String, max: 50 },
+    customHandle: { type: String, max: 50 },
+    bio: { type: String, max: 250 },
   },
   posts: [
     {

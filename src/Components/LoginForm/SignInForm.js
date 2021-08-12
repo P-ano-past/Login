@@ -42,12 +42,15 @@ export default class RegistrationForm extends Component {
 
   _initProfile() {
     const context = this.context;
+    console.log(context);
     //modify the set profile to add information to the "profile" object for the usernameContext.
     context.setProfile({
       usernameContext: this.state.username,
       isLoggedIn: true,
     });
   }
+
+  localStore() {}
 
   componentDidMount() {
     this._initProfile();
@@ -106,7 +109,7 @@ export default class RegistrationForm extends Component {
               isLoggedIn: true,
               _id: res.data._id,
             });
-            // console.log("this.state", this.state);
+            console.log("this.state", this.state);
             context.setProfile({
               usernameContext: this.state.username,
               isLoggedInContext: this.state.isLoggedIn,

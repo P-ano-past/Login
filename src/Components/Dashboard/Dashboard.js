@@ -1,15 +1,12 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import React, { useContext, useState } from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
-import NewPost from "./NewPost/NewPost";
 import Feed from "../Public/Feed";
 import Avatar from "react-avatar";
 import "./Dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Redirect, useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-  faMeteor,
   faHome,
   faHashtag,
   faBell,
@@ -20,13 +17,47 @@ import {
   faEllipsisH,
   faAngleUp,
 } from "@fortawesome/free-solid-svg-icons";
-// import Sidenav from "../Sidenav/Sidenav";
 import Profile from "../Public/Profile/Profile";
+import "../../Components/Sidenav/Sidenav.css";
+import axios from "axios";
 
 export default function Dashboard() {
   const userContext = useContext(UsernameContext);
   const profileUsername = userContext.profile.usernameContext;
+  const existing = localStorage.getItem("userContextID");
   const [navComp, setNavComp] = useState(<Feed />);
+  const [LSID, setLSID] = useState("");
+
+  const LoStGet = localStorage.getItem("userContextID");
+
+  useEffect(() => {
+    checkLocal();
+  }, [userContext]);
+
+  const checkLocal = () => {
+    console.log("userContext", userContext);
+    setLSID(localStorage.getItem("userContextID"));
+    // console.log("userContext", userContext);
+    // console.log("window.performance", window.performance);
+    if (window.performance.navigation.type === 0) {
+      console.log("window loaded. ");
+      localStorage.setItem("userContextID", userContext.profile._id);
+    } else if (window.performance.navigation.type === 1) {
+      console.log("userContext refresh", userContext);
+      setLSID(LoStGet);
+      axios.get(`/api/user/${LoStGet}`).then((res) => {
+        console.log(`res call from window refresh`, res.data);
+      });
+    }
+
+    if (LSID) {
+      // context.setProfile({ _id: LSID });
+
+      console.log("LSID: ", LSID);
+    } else {
+      console.log("nothing here");
+    }
+  };
 
   const toFeed = () => {
     setNavComp(<Feed />);

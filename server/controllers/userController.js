@@ -44,6 +44,25 @@ module.exports = {
       .then(res.sendStatus(200))
       .catch((err) => res.status(401).json(err));
   },
+  updateProfile: function ({ body }, res) {
+    console.log(body);
+    db.User.findByIdAndUpdate(
+      {
+        _id: body.profile.author_id,
+      },
+      {
+        profile: {
+          customHandle: body.profile.customHandle,
+          bio: body.profile.bio,
+
+          upsert: true,
+          returnNewDocument: true,
+        },
+      }
+    )
+      .then(res.sendStatus(200))
+      .catch((err) => res.status(401).json(err));
+  },
   createUser: function ({ body }, res) {
     const bcrypt = require("bcryptjs");
 

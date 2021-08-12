@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { createBrowserHistory } from "history";
 import RegistrationForm from "../LoginForm/RegistrationForm";
+import LoginButton from "../LoginForm/Auth0Login";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -247,7 +248,8 @@ export default class Landing extends Component {
 
             <Row>
               <Col>
-                <Button
+                <LoginButton />
+                {/* <Button
                   className="joinbtns"
                   id="signupbtn"
                   onClick={() => {
@@ -258,7 +260,7 @@ export default class Landing extends Component {
                   block
                 >
                   Sign up
-                </Button>
+                </Button> */}
               </Col>
               <Col>
                 <Modal
