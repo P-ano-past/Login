@@ -245,7 +245,6 @@ export default class Landing extends Component {
                 </p>
               </Col>
             </Row>
-
             <Row>
               <Col>
                 <LoginButton />
