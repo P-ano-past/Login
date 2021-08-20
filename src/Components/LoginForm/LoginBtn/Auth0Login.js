@@ -12,7 +12,7 @@ const LoginButton = () => {
       variant="outline-primary"
       onClick={() => loginWithRedirect()}
     >
-      Log In test
+      Log In
     </Button>
   );
 };
