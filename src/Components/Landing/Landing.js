@@ -20,7 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { createBrowserHistory } from "history";
 import RegistrationForm from "../LoginForm/RegistrationForm";
-import LoginButton from "../LoginForm/Auth0Login";
+import LoginButton from "../LoginForm/LoginBtn/Auth0Login";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -171,7 +171,8 @@ export default class Landing extends Component {
           <Col xs={6} id="joinContainer">
             <Row className="loginContainer">
               <Col>
-                <Form onSubmit={this.handleSubmit} noValidate>
+                <LoginButton />
+                {/* <Form onSubmit={this.handleSubmit} noValidate>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="userInput"
@@ -189,7 +190,7 @@ export default class Landing extends Component {
                       <span className="error">{errors.username}</span>
                     )}
                   </InputGroup>
-                </Form>
+                </Form> */}
               </Col>
 
               <Col>
