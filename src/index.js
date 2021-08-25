@@ -6,12 +6,14 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 
 // const history = createBrowserHistory();
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId = process.env.REACT_APP_AUTH0_CLINT_ID;
 
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-54jms0nd.us.auth0.com"
-      clientId="2SRs8ky7KiJS9SzbH9CdU7IYAZrig7ED"
+      domain={domain}
+      clientId={clientId}
       redirectUri={window.location.origin}
     >
       <Router
