@@ -7,7 +7,7 @@ import App from "./App";
 
 // const history = createBrowserHistory();
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLINT_ID;
+const clientId = process.env.REACT_APP_AUTH0_CLIENT;
 
 ReactDOM.render(
   <React.StrictMode>

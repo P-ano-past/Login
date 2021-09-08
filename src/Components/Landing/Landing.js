@@ -21,6 +21,7 @@ import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { createBrowserHistory } from "history";
 import RegistrationForm from "../LoginForm/RegistrationForm";
 import LoginButton from "../LoginForm/LoginBtn/Auth0Login";
+import LogoutButton from "../LoginForm/LogoutBtn/Auth0LogoutBtn";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -249,6 +250,7 @@ export default class Landing extends Component {
             <Row>
               <Col>
                 <LoginButton />
+                <LogoutButton />
                 {/* <Button
                   className="joinbtns"
                   id="signupbtn"
