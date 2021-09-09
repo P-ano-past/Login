@@ -1,9 +1,7 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-import "./style.css";
 
-const Auth0Profile = () => {
+const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
@@ -21,4 +19,4 @@ const Auth0Profile = () => {
   );
 };
 
-export default Auth0Profile;
+export default Profile;
