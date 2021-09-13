@@ -22,6 +22,8 @@ import { createBrowserHistory } from "history";
 import RegistrationForm from "../LoginForm/RegistrationForm";
 import LoginButton from "../LoginForm/LoginBtn/Auth0Login";
 import LogoutButton from "../LoginForm/LogoutBtn/Auth0LogoutBtn";
+import Auth0Profile from "../LoginForm/LogoutBtn/Auth0Profile";
+import AuthenticationButton from "../LoginForm/AuthenticationButton";
 
 const validateForm = (errors) => {
   let valid = true;
@@ -249,8 +251,8 @@ export default class Landing extends Component {
             </Row>
             <Row>
               <Col>
-                <LoginButton />
-                <LogoutButton />
+                <AuthenticationButton />
+                <Auth0Profile />
                 {/* <Button
                   className="joinbtns"
                   id="signupbtn"
