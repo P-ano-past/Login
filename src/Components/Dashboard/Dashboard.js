@@ -20,6 +20,7 @@ import {
 import Profile from "../Public/Profile/Profile";
 import "../../Components/Sidenav/Sidenav.css";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Dashboard() {
   const userContext = useContext(UsernameContext);
@@ -27,8 +28,9 @@ export default function Dashboard() {
   const existing = localStorage.getItem("userContextID");
   const [navComp, setNavComp] = useState(<Feed />);
   const [LSID, setLSID] = useState("");
-
+  const [userInfo, setUserInfo] = useState("");
   const LoStGet = localStorage.getItem("userContextID");
+  const { user } = useAuth0();
 
   useEffect(() => {
     checkLocal();
@@ -57,6 +59,11 @@ export default function Dashboard() {
     } else {
       console.log("nothing here");
     }
+  };
+
+  const getUserInfo = () => {
+    setUserInfo(user);
+    console.log(userInfo);
   };
 
   const toFeed = () => {

@@ -10,6 +10,7 @@ import CreatePost from "./Components/Create/CreatePost/CreatePost";
 import Settings from "./Components/Settings/Settings";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { withAuth0 } from "@auth0/auth0-react";
 
 library.add(faAngleUp);
 
@@ -19,6 +20,8 @@ export default class App extends React.Component {
     this.state = {
       profile: { username: String, isLoggedIn: "" },
       setProfile: this.setProfile,
+      isLoggedIn: "",
+      userName: "",
     };
   }
 
@@ -35,7 +38,7 @@ export default class App extends React.Component {
             <Route path="/register" exact component={RegistrationForm} />
             <Route path="/signIn" exact component={SignInForm} />
             <Route path="/about" exact component={Landing} />
-            <Route path="/Dashboard" exact component={Dashboard} />
+            <Route path="/Dashboard" exact component={Dashboard}></Route>
             <Route path="/CreatePost" exact component={CreatePost} />
             <Route path="/Settings" exact component={Settings} />
           </Switch>
