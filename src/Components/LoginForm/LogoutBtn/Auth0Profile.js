@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Redirect, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
+import { UsernameContext } from "../../../Utils/UsernameContext/UsernameContext";
 import "./style.css";
 
 const Auth0Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const history = useHistory();
+  const userInfoContext = useContext(UsernameContext);
+
+  console.log("UserContext from Authprofile", userInfoContext);
+
+  // const pushContext = (userInfoContext) => {
+  //   console.log("UserContext from Authprofile", userInfoContext);
+  // };
 
   if (isAuthenticated === true) {
     history.push("/Dashboard");
