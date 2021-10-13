@@ -107,9 +107,18 @@ module.exports = {
     console.log("req.body", req.body);
     console.log("req.params", req.params);
     console.log("req.body.email: ", req.body.email);
-    db.User.find({})
+    db.User.find({ email: { $eq: req.body.email } })
+      .count()
       .then((dbModel) => {
-        console.log(dbModel);
+        console.log("dbModel count", dbModel);
+        // console.log("req", req);
+        if (dbModel === 0) {
+          console.log("array is empty");
+          // console.log(res);
+        } else {
+          console.log("theres something here");
+        }
+
         res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
