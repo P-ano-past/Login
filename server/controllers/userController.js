@@ -103,4 +103,19 @@ module.exports = {
       })
       .catch((err) => res.status(423).json(err));
   },
+  auth0Login: function (req, res) {
+    console.log("req.body", req.body);
+    console.log("req.params", req.params);
+    console.log("req.body.email: ", req.body.email);
+    db.User.find({})
+      .then((dbModel) => {
+        console.log(dbModel);
+        res.json(dbModel);
+      })
+      .catch((err) => res.status(422).json(err));
+    // console.log("res", res);
+    // db.User.findOne({
+    //   username: req.body.username,
+    // });
+  },
 };

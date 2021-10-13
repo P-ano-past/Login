@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   username: { type: String, unique: true, max: 50 },
+  email: { type: String, unique: true, max: 50 },
   userPassword: { type: String, max: 100 },
   date: { type: Date, default: Date.now },
   friendList: {
