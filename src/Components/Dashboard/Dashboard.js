@@ -34,29 +34,7 @@ export default function Dashboard() {
   const [auth0Username, setAuth0Username] = useState("");
   const [auth0GivenName, setAuth0GivenName] = useState("");
   const [auth0Nickname, setAuth0Nickname] = useState("");
-
   const LoStGet = localStorage.getItem("userContextID");
-
-  if (isAuthenticated) {
-    console.log(user);
-    console.log("authEmail:", auth0Email);
-    console.log("authUsername:", auth0Username);
-    console.log("authGivenName:", auth0GivenName);
-    console.log("authNick:", auth0Nickname);
-    console.log("Authenticated?: ", isAuthenticated);
-    axios
-      .post("/api/user/auth0Login", {
-        email: auth0Email,
-      })
-      .then((res) => {
-        console.log("Dashboard res for auth0email", res.data);
-      })
-      .catch((err) => {
-        console.log("err.response", err.response);
-        console.log("err.response.status", err.response.status);
-        console.log("err.response.headers", err.response.headers);
-      });
-  }
 
   useEffect(() => {
     setAuth0Email(user.email);
@@ -67,6 +45,31 @@ export default function Dashboard() {
     // checkLogin();
     checkLocal();
   }, []);
+
+  if (isAuthenticated) {
+    console.log(user);
+    console.log("authEmail:", auth0Email);
+    console.log("authUsername:", auth0Username);
+    console.log("authGivenName:", auth0GivenName);
+    console.log("authNick:", auth0Nickname);
+    console.log("Authenticated?: ", isAuthenticated);
+
+    axios
+      .post("/api/user/auth0Login", {
+        username: auth0Username,
+        email: auth0Email,
+        given_name: auth0GivenName,
+        nickname: auth0Nickname,
+      })
+      .then((res) => {
+        console.log("Dashboard res for auth0email", res.data);
+      })
+      .catch((err) => {
+        console.log("err.response", err.response);
+        console.log("err.response.status", err.response.status);
+        console.log("err.response.headers", err.response.headers);
+      });
+  }
 
   const checkLocal = () => {
     console.log("userContext", userContext);

@@ -108,23 +108,30 @@ module.exports = {
     console.log("req.params", req.params);
     console.log("req.body.email: ", req.body.email);
     db.User.find({ email: { $eq: req.body.email } })
-      .count()
+      .countDocuments()
       .then((dbModel) => {
         console.log("dbModel count", dbModel);
-        // console.log("req", req);
         if (dbModel === 0) {
-          console.log("array is empty");
-          // console.log(res);
+          db.User.create({
+            username: req.body.username,
+            email: req.body.email,
+            given_name: req.body.given_name,
+            nickname: req.body.nickname,
+          })
+            .then(
+              (dbModel) => res.json(dbModel),
+              console.log("profile created")
+            )
+            .catch((err) => res.status(422).json(err));
         } else {
           console.log("theres something here");
+          db.User.find({ email: { $eq: req.body.email } })
+            .then((dbModel) => {
+              console.log("nested find: ", req.body.email);
+            })
+            .catch((err) => res.status(422).json(err));
         }
-
-        res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
-    // console.log("res", res);
-    // db.User.findOne({
-    //   username: req.body.username,
-    // });
   },
 };
