@@ -122,14 +122,12 @@ module.exports = {
               (dbModel) => res.json(dbModel),
               console.log("profile created")
             )
-            .catch((err) => res.status(422).json(err));
+            .catch((err) => res.status(422).json(err).then(res.status(200)));
         } else {
-          console.log("theres something here");
+          console.log("theres something here: ", req.body);
           db.User.find({ email: { $eq: req.body.email } })
-            .then((dbModel) => {
-              console.log("nested find: ", req.body.email);
-            })
-            .catch((err) => res.status(422).json(err));
+            .then((dbModel) => res.json(dbModel))
+            .catch((err) => res.status(422).json(err).then(res.status(200)));
         }
       })
       .catch((err) => res.status(422).json(err));

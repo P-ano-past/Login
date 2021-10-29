@@ -6,7 +6,7 @@ import "./NewPost.css";
 
 export default function NewPost() {
   const userContext = useContext(UsernameContext);
-  const usernamePost = userContext.profile.usernameContext;
+  const usernamePost = userContext.profile.username;
   const profileID = userContext.profile._id;
   const [newUserPost, setNewUserPost] = useState("");
   const [postAuthorID, setPostAuthorID] = useState("");

@@ -252,7 +252,9 @@ export default class Landing extends Component {
             </Row>
             <Row>
               <Col>
-                <AuthenticationButton />
+                <AuthenticationButton
+                  onClick={() => console.log("thisisclicked")}
+                />
                 <Auth0Profile />
                 {/* <Button
                   className="joinbtns"

@@ -24,7 +24,7 @@ import NewPost from "../Dashboard/NewPost/NewPost";
 export default function Feed() {
   const usernameContext = useContext(UsernameContext);
   const profileID = usernameContext.profile._id;
-  const userStatus = usernameContext.profile.isLoggedInContext;
+  const userStatus = usernameContext.profile.email;
 
   const [feed, setFeed] = useState([]);
   const [userId, setUserId] = useState();
@@ -40,9 +40,9 @@ export default function Feed() {
       axios
         .get(`/api/user/${profileID}`)
         .then((res) => {
-          console.log("res.data.posts", res.data.posts);
+          console.log("res.data", res.data);
           setUserId(res.data._id);
-          setFeed(res.data.posts);
+          setFeed(res.data.posts.reverse());
         })
         .catch((err) => {
           console.log(err);
@@ -97,7 +97,7 @@ export default function Feed() {
       <Container className="statusFeedContainer">
         <ListGroup>
           {userStatus
-            ? feed.reverse().map((feed) => (
+            ? feed.map((feed) => (
                 <ListGroupItem key={feed} className="feedText">
                   <Container id="statusContainer">
                     <Row>

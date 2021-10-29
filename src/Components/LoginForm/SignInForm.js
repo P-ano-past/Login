@@ -40,17 +40,15 @@ export default class RegistrationForm extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  _initProfile() {
-    const context = this.context;
-    console.log(context);
-    //modify the set profile to add information to the "profile" object for the usernameContext.
-    context.setProfile({
-      usernameContext: this.state.username,
-      isLoggedIn: true,
-    });
-  }
-
-  localStore() {}
+  // _initProfile() {
+  //   const context = this.context;
+  //   console.log(context);
+  //   modify the set profile to add information to the "profile" object for the usernameContext.
+  //   context.setProfile({
+  //     usernameContext: this.state.username,
+  //     isLoggedIn: true,
+  //   });
+  // }
 
   componentDidMount() {
     this._initProfile();

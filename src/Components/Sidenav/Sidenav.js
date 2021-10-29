@@ -21,7 +21,9 @@ export default function Sidenav() {
   const userContext = useContext(UsernameContext);
   const history = useHistory();
 
-  const profileUsername = userContext.profile.usernameContext;
+  const profileUsername = userContext.profile.profile.username;
+
+  console.log("profileUsernaME: ", profileUsername);
 
   const toProfile = () => {
     console.log("profile btn clicked");

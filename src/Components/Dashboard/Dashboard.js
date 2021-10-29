@@ -25,54 +25,19 @@ import AuthenticationButton from "../LoginForm/AuthenticationButton";
 
 export default function Dashboard() {
   const userContext = useContext(UsernameContext);
-  const profileUsername = userContext.profile.usernameContext;
+  const profileUsername = userContext.profile.username;
   const existing = localStorage.getItem("userContextID");
   const [navComp, setNavComp] = useState(<Feed />);
   const [LSID, setLSID] = useState("");
   const { user, isAuthenticated } = useAuth0();
-  const [auth0Email, setAuth0Email] = useState("");
-  const [auth0Username, setAuth0Username] = useState("");
-  const [auth0GivenName, setAuth0GivenName] = useState("");
-  const [auth0Nickname, setAuth0Nickname] = useState("");
   const LoStGet = localStorage.getItem("userContextID");
+  const LocalID = localStorage.getItem("user");
 
-  useEffect(() => {
-    setAuth0Email(user.email);
-    setAuth0GivenName(user.given_name);
-    setAuth0Nickname(user.nickname);
-    setAuth0Username(user.name);
-    // console.log("userDashboard", user);
-    // checkLogin();
-    checkLocal();
-  }, []);
+  console.log("usercontext", userContext);
+  console.log("usercontext.profile", userContext.profile);
+  console.log("profile Username", profileUsername);
 
-  if (isAuthenticated) {
-    console.log(user);
-    console.log("authEmail:", auth0Email);
-    console.log("authUsername:", auth0Username);
-    console.log("authGivenName:", auth0GivenName);
-    console.log("authNick:", auth0Nickname);
-    console.log("Authenticated?: ", isAuthenticated);
-
-    axios
-      .post("/api/user/auth0Login", {
-        username: auth0Username,
-        email: auth0Email,
-        given_name: auth0GivenName,
-        nickname: auth0Nickname,
-      })
-      .then((res) => {
-        console.log("Dashboard res for auth0email", res.data);
-      })
-      .catch((err) => {
-        console.log("err.response", err.response);
-        console.log("err.response.status", err.response.status);
-        console.log("err.response.headers", err.response.headers);
-      });
-  }
-
-  const checkLocal = () => {
-    console.log("userContext", userContext);
+  const checkLocalContext = () => {
     setLSID(localStorage.getItem("userContextID"));
     // console.log("userContext", userContext);
     // console.log("window.performance", window.performance);
@@ -87,24 +52,6 @@ export default function Dashboard() {
       });
     }
   };
-
-  // const checkLogin = () => {
-  //   console.log("check isAuthenticated from checkLogin", isAuthenticated);
-  //   console.log("check auth0email from checkLogin", auth0Email);
-  //   if (isAuthenticated === true) {
-  //     axios.post("/api/user/auth0Login", {
-  //       email: auth0Email,
-  //     });
-  //   }
-  // };
-
-  // const getUserInfo = () => {
-  //   const { user, isAuthenticated } = useAuth0;
-  //   // setUserInfo(user);
-  //   // console.log(userInfo);
-  //   console.log("dashboardUser", user);
-  //   console.log("dasbhaordAuthenticated?", isAuthenticated);
-  // };
 
   const toFeed = () => {
     setNavComp(<Feed />);

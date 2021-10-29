@@ -15,13 +15,12 @@ import { withAuth0 } from "@auth0/auth0-react";
 library.add(faAngleUp);
 
 export default class App extends React.Component {
+  // this constructor modifes the context object.
   constructor(props) {
     super(props);
     this.state = {
       profile: { username: String, isLoggedIn: "" },
       setProfile: this.setProfile,
-      isLoggedIn: "",
-      userName: "",
     };
   }
 
