@@ -9,20 +9,16 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {
-    // console.log("req.params", req.params);
     db.User.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   findByUser: function (req, res) {
-    // console.log("findbyUser triggered");
-    // console.log("req.params", req.params);
     db.User.findById(req.params.username)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   createPost: function ({ body }, res) {
-    console.log(body);
     db.User.findByIdAndUpdate(
       {
         _id: body.posts.postAuthor_id,
@@ -42,6 +38,27 @@ module.exports = {
       { upsert: true, returnNewDocument: true }
     )
       .then(res.sendStatus(200))
+      .catch((err) => res.status(401).json(err));
+  },
+  deletePost: function ({ body }, res) {
+    console.log("body.posts: ", body);
+    console.log("body.posts._id: ", body.posts._id);
+
+    db.User.findOne(
+      {
+        _id: body.posts.postAuthor_id,
+      },
+      {
+        posts: {
+          $elemMatch: {
+            _id: body.posts._id,
+            post: body.posts.post,
+            postAuthor_id: body.posts.postAuthor_id,
+          },
+        },
+      }
+    )
+      .then((res) => console.log("res", res), res.status(200))
       .catch((err) => res.status(401).json(err));
   },
   updateProfile: function ({ body }, res) {
@@ -65,7 +82,6 @@ module.exports = {
   },
   createUser: function ({ body }, res) {
     const bcrypt = require("bcryptjs");
-
     bcrypt.genSalt(10, function (err, salt, next) {
       bcrypt.hash(body.userPassword, salt, function (err, hash) {
         body.userPassword = hash;
@@ -104,13 +120,9 @@ module.exports = {
       .catch((err) => res.status(423).json(err));
   },
   auth0Login: function (req, res) {
-    console.log("req.body", req.body);
-    console.log("req.params", req.params);
-    console.log("req.body.email: ", req.body.email);
     db.User.find({ email: { $eq: req.body.email } })
       .countDocuments()
       .then((dbModel) => {
-        console.log("dbModel count", dbModel);
         if (dbModel === 0) {
           db.User.create({
             username: req.body.username,
@@ -118,13 +130,9 @@ module.exports = {
             given_name: req.body.given_name,
             nickname: req.body.nickname,
           })
-            .then(
-              (dbModel) => res.json(dbModel),
-              console.log("profile created")
-            )
+            .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err).then(res.status(200)));
         } else {
-          console.log("theres something here: ", req.body);
           db.User.find({ email: { $eq: req.body.email } })
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err).then(res.status(200)));

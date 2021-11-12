@@ -13,13 +13,12 @@ export default function NewPost() {
   const [postAuthorName, setPostAuthorName] = useState("");
 
   const handleBoxClick = (e) => {
-    console.log("userContext", userContext);
     setPostAuthorID(profileID);
     setPostAuthorName(usernamePost);
   };
 
   const handleSubmit = () => {
-    console.log("window.location", window.location);
+    window.location.reload(false);
     axios
       .post(`/api/user/post/${profileID}`, {
         posts: {
@@ -28,7 +27,9 @@ export default function NewPost() {
           postAuthor_id: postAuthorID,
         },
       })
-      .then((res) => {})
+      .then((res) => {
+        console.log("new post res", res);
+      })
       .catch((err) => {
         console.log("err.response", err.response);
         console.log("err.response.status", err.response.status);

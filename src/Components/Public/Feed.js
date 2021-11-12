@@ -7,6 +7,8 @@ import {
   ListGroup,
   ListGroupItem,
   Button,
+  Dropdown,
+  DropdownProps,
 } from "react-bootstrap";
 import { UsernameContext } from "../../Utils/UsernameContext/UsernameContext";
 import "./Feed.css";
@@ -49,6 +51,13 @@ export default function Feed() {
         });
     }
   };
+
+  // const postOptionDelete = () => {
+  //   console.log("delete clicked");
+  //   axios.get(`/api/user/post/${profileID}`).then((res) => {
+  //     console.log("res.data.posts map", res.data.posts.map());
+  //   });
+  // };
 
   useEffect(() => {
     getFeedData();
@@ -130,14 +139,40 @@ export default function Feed() {
                             </h6>
                           </Col>
                           <Col md="auto" id="optionsBtnCont">
-                            <Button
-                              id="feedMoreIC"
-                              onClick={() => {
-                                console.log("options clicked.");
-                              }}
-                            >
-                              <FontAwesomeIcon icon={faEllipsisH} />
-                            </Button>
+                            <Dropdown>
+                              <Dropdown.Toggle id="dropdown-autoclose-true">
+                                <FontAwesomeIcon icon={faEllipsisH} />
+                              </Dropdown.Toggle>
+                              <Dropdown.Menu>
+                                <Dropdown.Item
+                                  href="#"
+                                  onClick={() => {
+                                    console.log("feed id:", feed._id);
+                                    axios
+                                      .delete(
+                                        `/api/user/post/${feed.postAuthor_id}`,
+                                        {
+                                          data: {
+                                            posts: {
+                                              _id: feed._id,
+                                              post: feed.post,
+                                              postAuthor_id: feed.postAuthor_id,
+                                            },
+                                          },
+                                        }
+                                      )
+                                      .then((res) => {
+                                        console.log("res", res);
+                                      })
+                                      .catch((err) => {
+                                        console.log("err", err);
+                                      });
+                                  }}
+                                >
+                                  Delete?
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
                           </Col>
                         </Col>
                         <Col id="feedStatus">
