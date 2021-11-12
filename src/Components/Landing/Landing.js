@@ -175,7 +175,7 @@ export default class Landing extends Component {
           <Col xs={6} id="joinContainer">
             <Row className="loginContainer">
               <Col>
-                <LoginButton />
+                {/* <LoginButton /> */}
                 {/* <Form onSubmit={this.handleSubmit} noValidate>
                   <InputGroup className="mb-3">
                     <FormControl
@@ -198,7 +198,7 @@ export default class Landing extends Component {
               </Col>
 
               <Col>
-                <Form>
+                {/* <Form>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="userInput"
@@ -218,18 +218,18 @@ export default class Landing extends Component {
 
                     <p value={this.state.loginError}>{this.state.loginError}</p>
                   </InputGroup>
-                </Form>
+                </Form> */}
               </Col>
 
               <Col>
-                <Button
+                {/* <Button
                   id="submitButton"
                   type="submit"
                   onClick={this.handleSubmit}
                   variant="outline-primary"
                 >
                   Log in
-                </Button>
+                </Button> */}
               </Col>
             </Row>
             <Row>
