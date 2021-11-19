@@ -41,16 +41,13 @@ module.exports = {
       .catch((err) => res.status(401).json(err));
   },
   deletePost: function ({ body }, res) {
-    console.log("body.posts: ", body);
-    console.log("body.posts._id: ", body.posts._id);
-
-    db.User.findOne(
+    db.User.updateOne(
       {
         _id: body.posts.postAuthor_id,
       },
       {
-        posts: {
-          $elemMatch: {
+        $pull: {
+          posts: {
             _id: body.posts._id,
             post: body.posts.post,
             postAuthor_id: body.posts.postAuthor_id,
@@ -58,7 +55,7 @@ module.exports = {
         },
       }
     )
-      .then((res) => console.log("res", res), res.status(200))
+      .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(401).json(err));
   },
   updateProfile: function ({ body }, res) {
@@ -71,7 +68,6 @@ module.exports = {
         profile: {
           customHandle: body.profile.customHandle,
           bio: body.profile.bio,
-
           upsert: true,
           returnNewDocument: true,
         },

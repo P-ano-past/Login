@@ -27,10 +27,10 @@ export default function Feed() {
   const usernameContext = useContext(UsernameContext);
   const profileID = usernameContext.profile._id;
   const userStatus = usernameContext.profile.email;
-
   const [feed, setFeed] = useState([]);
   const [userId, setUserId] = useState();
   const [feedUsername, setFeedUsername] = useState();
+  const [delAuthor, setDelAuthor] = useState();
 
   // "profileID" doesn't doesn't already have a profileID on first render.
 
@@ -51,13 +51,6 @@ export default function Feed() {
         });
     }
   };
-
-  // const postOptionDelete = () => {
-  //   console.log("delete clicked");
-  //   axios.get(`/api/user/post/${profileID}`).then((res) => {
-  //     console.log("res.data.posts map", res.data.posts.map());
-  //   });
-  // };
 
   useEffect(() => {
     getFeedData();
@@ -147,7 +140,6 @@ export default function Feed() {
                                 <Dropdown.Item
                                   href="#"
                                   onClick={() => {
-                                    console.log("feed id:", feed._id);
                                     axios
                                       .delete(
                                         `/api/user/post/${feed.postAuthor_id}`,
@@ -161,8 +153,8 @@ export default function Feed() {
                                           },
                                         }
                                       )
-                                      .then((res) => {
-                                        console.log("res", res);
+                                      .then(() => {
+                                        getFeedData();
                                       })
                                       .catch((err) => {
                                         console.log("err", err);
