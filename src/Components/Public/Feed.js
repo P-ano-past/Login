@@ -42,7 +42,6 @@ export default function Feed() {
       axios
         .get(`/api/user/${profileID}`)
         .then((res) => {
-          console.log("res.data", res.data);
           setUserId(res.data._id);
           setFeed(res.data.posts.reverse());
         })

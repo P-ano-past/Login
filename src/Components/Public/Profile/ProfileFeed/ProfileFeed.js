@@ -23,15 +23,14 @@ export default function ProfileFeed() {
   const usernameContext = useContext(UsernameContext);
   const profileID = usernameContext.profile._id;
   const userStatus = usernameContext.profile.isLoggedInContext;
-
   const [feed, setFeed] = useState([]);
   const [userId, setUserId] = useState();
   const [feedUsername, setFeedUsername] = useState();
 
   // "profileID" doesn't doesn't already have a profileID on first render.
-
+  console.log("ProfileId from profileFeed: ", profileID);
   const getFeedData = () => {
-    // console.log("usernameContext:", usernameContext);
+    console.log("usernameContext from getFeedData: ", usernameContext);
     if (profileID === undefined) {
       return console.log("loading...................");
     } else {
@@ -66,7 +65,7 @@ export default function ProfileFeed() {
   };
 
   return (
-    <Container className="feedMain">
+    <Container className="feedMainprof">
       <Container>
         <ListGroup>
           {userStatus

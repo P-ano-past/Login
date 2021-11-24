@@ -27,7 +27,6 @@ export default function Profile() {
     axios
       .get(`/api/user/${profileID}`)
       .then((res) => {
-        console.log("res.data", res.data);
         setGetName(res.data.profile.customHandle);
         setGetBio(res.data.profile.bio);
         setGetHandle(res.data.username);

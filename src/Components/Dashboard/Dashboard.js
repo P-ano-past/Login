@@ -33,26 +33,6 @@ export default function Dashboard() {
   const LoStGet = localStorage.getItem("userContextID");
   const LocalID = localStorage.getItem("user");
 
-  console.log("usercontext", userContext);
-  console.log("usercontext.profile", userContext.profile);
-  console.log("profile Username", profileUsername);
-
-  const checkLocalContext = () => {
-    setLSID(localStorage.getItem("userContextID"));
-    // console.log("userContext", userContext);
-    // console.log("window.performance", window.performance);
-    if (window.performance.navigation.type === 0) {
-      console.log("window loaded. ");
-      localStorage.setItem("userContextID", userContext.profile._id);
-    } else if (window.performance.navigation.type === 1) {
-      console.log("userContext refresh", userContext);
-      setLSID(LoStGet);
-      axios.get(`/api/user/${LoStGet}`).then((res) => {
-        console.log(`res call from window refresh`, res.data);
-      });
-    }
-  };
-
   const toFeed = () => {
     setNavComp(<Feed />);
   };

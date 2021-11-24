@@ -3,6 +3,9 @@
   border-left: #2f3336 solid 1px;
   border-right: #2f3336 solid 1px;
   padding: 0;
+  margin-left: 0px;
+  margin-right: 0px;
+  /* border: yellow 1px dashed; */
 }
 
 .prfNameCont {

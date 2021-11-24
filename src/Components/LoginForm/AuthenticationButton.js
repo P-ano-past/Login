@@ -11,8 +11,6 @@ export default function AuthenticationButton() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const context = useContext(UsernameContext);
 
-  // console.log("auth btn context", context);
-
   useEffect(() => {
     const doSomething = async () => {
       axios
@@ -23,7 +21,6 @@ export default function AuthenticationButton() {
           nickname: user.given_name,
         })
         .then((res) => {
-          console.log("res", res);
           context.setProfile({
             _id: res.data[0]._id,
             username: res.data[0].username,
