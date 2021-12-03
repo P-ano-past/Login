@@ -82,7 +82,7 @@ export default function Dashboard() {
             </Row>
           </Container>
           {/*  */}
-          <Container className="sidenavContainer">
+          {/* <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
               <Col className="testLine">
                 <Col xs={3} className="navIconCont">
@@ -97,9 +97,9 @@ export default function Dashboard() {
                 </Col>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
           {/*  */}
-          <Container className="sidenavContainer">
+          {/* <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
               <Col className="testLine">
                 <Col xs={3} className="navIconCont">
@@ -114,9 +114,9 @@ export default function Dashboard() {
                 </Col>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
           {/*  */}
-          <Container className="sidenavContainer">
+          {/* <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
               <Col className="testLine">
                 {" "}
@@ -132,9 +132,9 @@ export default function Dashboard() {
                 </Col>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
           {/*  */}
-          <Container className="sidenavContainer">
+          {/* <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
               <Col className="testLine">
                 <Col xs={3} className="navIconCont">
@@ -149,9 +149,9 @@ export default function Dashboard() {
                 </Col>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
           {/*  */}
-          <Container className="sidenavContainer">
+          {/* <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
               <Col className="testLine">
                 <Col xs={3} className="navIconCont">
@@ -166,7 +166,7 @@ export default function Dashboard() {
                 </Col>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
           {/*  */}
           <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
@@ -192,7 +192,7 @@ export default function Dashboard() {
             </Row>
           </Container>
           {/*  */}
-          <Container className="sidenavContainer">
+          {/* <Container className="sidenavContainer">
             <Row xs="auto" className="sidenavItem">
               <Col className="testLine">
                 <Col xs={3} className="navIconCont">
@@ -207,7 +207,7 @@ export default function Dashboard() {
                 </Col>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
           {/*  */}
           <Container className="sidenavContainer">
             <Row>

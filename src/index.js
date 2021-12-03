@@ -9,6 +9,9 @@ import App from "./App";
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT;
 
+console.log("origin 12", window.location.origin);
+console.log("origin 13", window.location.origin);
+
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
