@@ -50,7 +50,7 @@ export default function NewPost() {
               id="textSpace"
               rows={3}
               className="newUserPost"
-              placeholder="Whats going on?"
+              placeholder="Whats going on??"
               aria-label="newUserPost"
               name="newUserPost"
               value={newUserPost}
@@ -61,6 +61,9 @@ export default function NewPost() {
         </Form>
         <Button id="sendBtn" onClick={handleSubmit}>
           Send
+
+
+
         </Button>
       </Col>
     </Container>

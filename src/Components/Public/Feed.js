@@ -37,7 +37,7 @@ export default function Feed() {
   const getFeedData = () => {
     // console.log("usernameContext:", usernameContext);
     if (profileID === undefined) {
-      return console.log("loading...................");
+      return console.log("loading");
     } else {
       axios
         .get(`/api/user/${profileID}`)
@@ -108,7 +108,6 @@ export default function Feed() {
                           name={feed.author}
                           size="50px"
                         />
-                        {/* need image here */}
                       </Col>
                       <Col id="feedUserCont">
                         <Col id="feedUserIconBtnCont">
@@ -160,7 +159,7 @@ export default function Feed() {
                                       });
                                   }}
                                 >
-                                  Delete?
+                                  Delete
                                 </Dropdown.Item>
                               </Dropdown.Menu>
                             </Dropdown>

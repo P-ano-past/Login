@@ -15,7 +15,7 @@ export default class CreatePost extends Component {
             <FormControl as="textarea" aria-label="New post" />
           </InputGroup>
         </div>
-        <Button>Submit</Button>
+        <Button>Submitt</Button>
         <Button variant="danger">Cancel</Button>
       </Container>
     );

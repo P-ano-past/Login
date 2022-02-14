@@ -13,6 +13,7 @@ export default function AuthenticationButton() {
 
   useEffect(() => {
     const doSomething = async () => {
+      console.log("isAuth?", isAuthenticated);
       axios
         .post("/api/user/auth0Login", {
           username: user.name,
